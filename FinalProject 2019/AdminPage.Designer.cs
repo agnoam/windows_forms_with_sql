@@ -32,6 +32,7 @@
             this.ManageATMs = new System.Windows.Forms.Button();
             this.ButtonSelector = new System.Windows.Forms.Panel();
             this.Emploees = new System.Windows.Forms.Button();
+            this.ContentPanel = new System.Windows.Forms.Panel();
             this.formBorder.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
             this.SuspendLayout();
@@ -141,6 +142,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1095, 741);
+            this.Controls.Add(this.ContentPanel);
             this.Controls.Add(this.buttonsPanel);
             this.Controls.Add(this.formBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -149,6 +151,7 @@
             this.formBorder.ResumeLayout(false);
             this.formBorder.PerformLayout();
             this.buttonsPanel.ResumeLayout(false);
+            this.ContentPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -164,6 +167,7 @@
         private System.Windows.Forms.Button ManageRoutes;
         private System.Windows.Forms.Button ManageATMs;
         private System.Windows.Forms.Panel ButtonSelector;
+        private System.Windows.Forms.Panel ContentPanel;
     }
 }
 

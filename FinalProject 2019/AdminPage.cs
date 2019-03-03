@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalProject_2019.AdminPageTabs;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,8 @@ namespace FinalProject_2019 {
 
         private bool mouseDown = false;
         private Point lastLocation;
+        private PanelSelector selector = PanelSelector.EMPLOEES;
+
 
         public AdminPage() {
             InitializeComponent();
@@ -44,6 +47,13 @@ namespace FinalProject_2019 {
             // Moving the buttonSelector
             ButtonSelector.Top = Emploees.Top;
             ButtonSelector.Height = Emploees.Height;
+
+            // Show the Emploees Panel
+            Console.WriteLine("Emploees Showing");
+            //EmploeesContentPanel.Show();
+
+            HidePanel();
+            selector = PanelSelector.EMPLOEES;
         }
 
         private void ManageATMs_Click(object sender, EventArgs e) {
@@ -51,13 +61,58 @@ namespace FinalProject_2019 {
             ButtonSelector.Top = ManageATMs.Top;
             ButtonSelector.Height = ManageATMs.Height;
 
-            // Do anything ...
+            // Show the ATMsContent Panel
+            Console.WriteLine("ATMs Showing");
+            Emploees emploeesView = new Emploees();
+            // emploeesView.TopLevel = false;
+            Controls.Clear();
+            Controls.Add(emploeesView);
+            emploeesView.Show();
+
+            HidePanel();
+            selector = PanelSelector.ATMS;
         }
 
         private void ManageRoutes_Click(object sender, EventArgs e) {
             // Moving the buttonSelector
             ButtonSelector.Top = ManageRoutes.Top;
             ButtonSelector.Height = ManageRoutes.Height;
+
+            // Show the RoutesContent Panel
+            Console.WriteLine("Routes Showing");
+            //RoutesContentPanel.Show();
+
+            HidePanel();
+            selector = PanelSelector.ROUTES;
+        }
+
+        private void HidePanel() {
+            switch(selector) {
+                case PanelSelector.EMPLOEES:
+                    Console.WriteLine("Emploees Hidden");
+
+                    //EmploeesContentPanel.Hide();
+                    Emploees.Hide();
+                    break;
+
+                case PanelSelector.ATMS:
+                    Console.WriteLine("ATMs Hidden");
+
+                    //ATMsContentPanel.Hide();
+                    break;
+
+                case PanelSelector.ROUTES:
+                    Console.WriteLine("Routes Hidden");
+
+                    //RoutesContentPanel.Hide();
+                    break;
+            }
         }
     }
+}
+
+enum PanelSelector {
+    EMPLOEES,
+    ATMS,
+    ROUTES
 }

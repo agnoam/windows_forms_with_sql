@@ -12,7 +12,7 @@ namespace FinalProject_2019 {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginPage());
+            Application.Run(new AdminPage());
         }
     }
 }
