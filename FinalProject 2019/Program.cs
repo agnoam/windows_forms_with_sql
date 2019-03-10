@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalProject_2019.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -12,7 +13,7 @@ namespace FinalProject_2019 {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AdminPage());
+            Application.Run(new MapPage());
         }
     }
 }

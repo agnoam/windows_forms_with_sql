@@ -14,7 +14,7 @@ namespace FinalProject_2019 {
 
         private bool mouseDown = false;
         private Point lastLocation;
-        private PanelSelector selector = PanelSelector.EMPLOEES;
+        private PanelSelector selector = PanelSelector.employeeS;
 
 
         public AdminPage() {
@@ -43,17 +43,17 @@ namespace FinalProject_2019 {
             mouseDown = false;
         }
 
-        private void Emploees_Click(object sender, EventArgs e) {
+        private void employees_Click(object sender, EventArgs e) {
             // Moving the buttonSelector
-            ButtonSelector.Top = Emploees.Top;
-            ButtonSelector.Height = Emploees.Height;
+            ButtonSelector.Top = employees.Top;
+            ButtonSelector.Height = employees.Height;
 
-            // Show the Emploees Panel
-            Console.WriteLine("Emploees Showing");
-            //EmploeesContentPanel.Show();
+            // Show the employees Panel
+            Console.WriteLine("employees Showing");
+            //employeesContentPanel.Show();
 
             HidePanel();
-            selector = PanelSelector.EMPLOEES;
+            selector = PanelSelector.employeeS;
         }
 
         private void ManageATMs_Click(object sender, EventArgs e) {
@@ -63,11 +63,11 @@ namespace FinalProject_2019 {
 
             // Show the ATMsContent Panel
             Console.WriteLine("ATMs Showing");
-            Emploees emploeesView = new Emploees();
-            // emploeesView.TopLevel = false;
+            employees employeesView = new employees();
+            // employeesView.TopLevel = false;
             Controls.Clear();
-            Controls.Add(emploeesView);
-            emploeesView.Show();
+            Controls.Add(employeesView);
+            employeesView.Show();
 
             HidePanel();
             selector = PanelSelector.ATMS;
@@ -88,11 +88,11 @@ namespace FinalProject_2019 {
 
         private void HidePanel() {
             switch(selector) {
-                case PanelSelector.EMPLOEES:
-                    Console.WriteLine("Emploees Hidden");
+                case PanelSelector.employeeS:
+                    Console.WriteLine("employees Hidden");
 
-                    //EmploeesContentPanel.Hide();
-                    Emploees.Hide();
+                    //employeesContentPanel.Hide();
+                    employees.Hide();
                     break;
 
                 case PanelSelector.ATMS:
@@ -112,7 +112,7 @@ namespace FinalProject_2019 {
 }
 
 enum PanelSelector {
-    EMPLOEES,
+    employeeS,
     ATMS,
     ROUTES
 }

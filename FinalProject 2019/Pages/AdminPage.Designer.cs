@@ -31,7 +31,7 @@
             this.ManageRoutes = new System.Windows.Forms.Button();
             this.ManageATMs = new System.Windows.Forms.Button();
             this.ButtonSelector = new System.Windows.Forms.Panel();
-            this.Emploees = new System.Windows.Forms.Button();
+            this.employees = new System.Windows.Forms.Button();
             this.ContentPanel = new System.Windows.Forms.Panel();
             this.formBorder.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
@@ -92,7 +92,7 @@
             this.buttonsPanel.Controls.Add(this.ManageRoutes);
             this.buttonsPanel.Controls.Add(this.ManageATMs);
             this.buttonsPanel.Controls.Add(this.ButtonSelector);
-            this.buttonsPanel.Controls.Add(this.Emploees);
+            this.buttonsPanel.Controls.Add(this.employees);
             this.buttonsPanel.Location = new System.Drawing.Point(-2, 47);
             this.buttonsPanel.Name = "buttonsPanel";
             this.buttonsPanel.Size = new System.Drawing.Size(305, 694);
@@ -126,15 +126,15 @@
             this.ButtonSelector.Size = new System.Drawing.Size(32, 210);
             this.ButtonSelector.TabIndex = 3;
             // 
-            // Emploees
+            // employees
             // 
-            this.Emploees.Location = new System.Drawing.Point(0, -1);
-            this.Emploees.Name = "Emploees";
-            this.Emploees.Size = new System.Drawing.Size(274, 212);
-            this.Emploees.TabIndex = 2;
-            this.Emploees.Text = "Manage emploees";
-            this.Emploees.UseVisualStyleBackColor = true;
-            this.Emploees.Click += new System.EventHandler(this.Emploees_Click);
+            this.employees.Location = new System.Drawing.Point(0, -1);
+            this.employees.Name = "employees";
+            this.employees.Size = new System.Drawing.Size(274, 212);
+            this.employees.TabIndex = 2;
+            this.employees.Text = "Manage employees";
+            this.employees.UseVisualStyleBackColor = true;
+            this.employees.Click += new System.EventHandler(this.employees_Click);
             // 
             // AdminPage
             // 
@@ -163,7 +163,7 @@
         private System.Windows.Forms.Button closeForm;
         private System.Windows.Forms.Panel buttonsPanel;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button Emploees;
+        private System.Windows.Forms.Button employees;
         private System.Windows.Forms.Button ManageRoutes;
         private System.Windows.Forms.Button ManageATMs;
         private System.Windows.Forms.Panel ButtonSelector;
