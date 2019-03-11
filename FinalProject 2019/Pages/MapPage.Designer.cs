@@ -30,6 +30,8 @@ namespace FinalProject_2019.Pages {
             this.panel1 = new System.Windows.Forms.Panel();
             this.FrameLabel = new System.Windows.Forms.Label();
             this.closeForm = new System.Windows.Forms.Button();
+            this.map = new GMap.NET.WindowsForms.GMapControl();
+            this.addMark = new System.Windows.Forms.Button();
             this.formBorder.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -82,15 +84,53 @@ namespace FinalProject_2019.Pages {
             this.closeForm.UseVisualStyleBackColor = false;
             this.closeForm.Click += new System.EventHandler(this.closeForm_Click);
             // 
-            // AdminPage
+            // map
+            // 
+            this.map.Bearing = 0F;
+            this.map.CanDragMap = true;
+            this.map.EmptyTileColor = System.Drawing.Color.Navy;
+            this.map.GrayScaleMode = false;
+            this.map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
+            this.map.LevelsKeepInMemmory = 5;
+            this.map.Location = new System.Drawing.Point(313, 47);
+            this.map.MarkersEnabled = true;
+            this.map.MaxZoom = 2;
+            this.map.MinZoom = 2;
+            this.map.MouseWheelZoomEnabled = true;
+            this.map.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+            this.map.Name = "map";
+            this.map.NegativeMode = false;
+            this.map.PolygonsEnabled = true;
+            this.map.RetryLoadTile = 0;
+            this.map.RoutesEnabled = true;
+            this.map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
+            this.map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
+            this.map.ShowTileGridLines = false;
+            this.map.Size = new System.Drawing.Size(783, 693);
+            this.map.TabIndex = 1;
+            this.map.Zoom = 0D;
+            // 
+            // addMark
+            // 
+            this.addMark.Location = new System.Drawing.Point(1008, 706);
+            this.addMark.Name = "addMark";
+            this.addMark.Size = new System.Drawing.Size(75, 23);
+            this.addMark.TabIndex = 2;
+            this.addMark.Text = "Add Marker";
+            this.addMark.UseVisualStyleBackColor = true;
+            this.addMark.Click += new System.EventHandler(this.addMark_Click);
+            // 
+            // MapPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1095, 741);
+            this.Controls.Add(this.addMark);
+            this.Controls.Add(this.map);
             this.Controls.Add(this.formBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "AdminPage";
+            this.Name = "MapPage";
             this.Text = "NSecurity";
             this.formBorder.ResumeLayout(false);
             this.formBorder.PerformLayout();
@@ -104,5 +144,7 @@ namespace FinalProject_2019.Pages {
         private System.Windows.Forms.Label FrameLabel;
         private System.Windows.Forms.Button closeForm;
         private System.Windows.Forms.Panel panel1;
+        private GMap.NET.WindowsForms.GMapControl map;
+        private System.Windows.Forms.Button addMark;
     }
 }

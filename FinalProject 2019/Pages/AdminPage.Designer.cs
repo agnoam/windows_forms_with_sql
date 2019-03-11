@@ -32,9 +32,12 @@
             this.ManageATMs = new System.Windows.Forms.Button();
             this.ButtonSelector = new System.Windows.Forms.Panel();
             this.employees = new System.Windows.Forms.Button();
-            this.ContentPanel = new System.Windows.Forms.Panel();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.formBorder.SuspendLayout();
             this.buttonsPanel.SuspendLayout();
+            this.tabControl.SuspendLayout();
             this.SuspendLayout();
             // 
             // formBorder
@@ -43,6 +46,7 @@
             this.formBorder.Controls.Add(this.panel1);
             this.formBorder.Controls.Add(this.FrameLabel);
             this.formBorder.Controls.Add(this.closeForm);
+            this.formBorder.Controls.Add(this.tabControl);
             this.formBorder.Location = new System.Drawing.Point(-2, -2);
             this.formBorder.Name = "formBorder";
             this.formBorder.Size = new System.Drawing.Size(1101, 49);
@@ -136,13 +140,43 @@
             this.employees.UseVisualStyleBackColor = true;
             this.employees.Click += new System.EventHandler(this.employees_Click);
             // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Location = new System.Drawing.Point(278, 12);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(821, 729);
+            this.tabControl.TabIndex = 2;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(813, 700);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(192, 71);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // AdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1095, 741);
-            this.Controls.Add(this.ContentPanel);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.buttonsPanel);
             this.Controls.Add(this.formBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -151,7 +185,7 @@
             this.formBorder.ResumeLayout(false);
             this.formBorder.PerformLayout();
             this.buttonsPanel.ResumeLayout(false);
-            this.ContentPanel.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -167,7 +201,9 @@
         private System.Windows.Forms.Button ManageRoutes;
         private System.Windows.Forms.Button ManageATMs;
         private System.Windows.Forms.Panel ButtonSelector;
-        private System.Windows.Forms.Panel ContentPanel;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 

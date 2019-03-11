@@ -1,12 +1,5 @@
-﻿using FinalProject_2019.AdminPageTabs;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
 
 namespace FinalProject_2019 {
@@ -14,11 +7,13 @@ namespace FinalProject_2019 {
 
         private bool mouseDown = false;
         private Point lastLocation;
-        private PanelSelector selector = PanelSelector.employeeS;
+        private PanelSelector selector = PanelSelector.employees;
 
 
         public AdminPage() {
             InitializeComponent();
+
+            DatabaseConnector.read();
         }
 
         private void closeForm_Click(object sender, EventArgs e) {
@@ -53,7 +48,7 @@ namespace FinalProject_2019 {
             //employeesContentPanel.Show();
 
             HidePanel();
-            selector = PanelSelector.employeeS;
+            selector = PanelSelector.employees;
         }
 
         private void ManageATMs_Click(object sender, EventArgs e) {
@@ -63,11 +58,11 @@ namespace FinalProject_2019 {
 
             // Show the ATMsContent Panel
             Console.WriteLine("ATMs Showing");
-            employees employeesView = new employees();
+            //employees employeesView = new employees();
             // employeesView.TopLevel = false;
             Controls.Clear();
-            Controls.Add(employeesView);
-            employeesView.Show();
+            //Controls.Add(employeesView);
+            //employeesView.Show();
 
             HidePanel();
             selector = PanelSelector.ATMS;
@@ -88,7 +83,7 @@ namespace FinalProject_2019 {
 
         private void HidePanel() {
             switch(selector) {
-                case PanelSelector.employeeS:
+                case PanelSelector.employees:
                     Console.WriteLine("employees Hidden");
 
                     //employeesContentPanel.Hide();
@@ -112,7 +107,7 @@ namespace FinalProject_2019 {
 }
 
 enum PanelSelector {
-    employeeS,
+    employees,
     ATMS,
     ROUTES
 }
