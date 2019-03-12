@@ -12,7 +12,6 @@ namespace FinalProject_2019 {
 
         public AdminPage() {
             InitializeComponent();
-
             DatabaseConnector.read();
         }
 

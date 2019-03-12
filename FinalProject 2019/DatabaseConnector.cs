@@ -74,12 +74,36 @@ namespace FinalProject_2019 {
             }
 
             try {
-                
+                // Executing the query in the SQL server
+                cmd.ExecuteNonQuery();
             } catch(MySqlException ex) {
                 throw ex;
             }
 
+            // Closing SQL connection
             conn.Close();
+        }
+
+        public static void fillAtmsDatabase(ATM[] atmsToFill) {
+            foreach (ATM atm in atmsToFill) {
+                write("INSRT INTO Atms (address, capacity, atm_size, brand) " +
+                    $"VALUES({atm.address}, {atm.capacity}, {atm.size}, {atm.brand})");
+            }
+        }
+    }
+
+    class ATM {
+
+        public string address { get; set; }
+        public int capacity { get; set; }
+        public int size { get; set; }
+        public string brand { get; set; }
+
+        public ATM(string _address, int _capacity, int _size, string _brand) {
+            address = _address;
+            capacity = _capacity;
+            size = _size;
+            brand = _brand;
         }
     }
 }
