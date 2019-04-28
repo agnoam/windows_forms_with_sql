@@ -27,17 +27,18 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.FrameLabel = new System.Windows.Forms.Label();
             this.closeForm = new System.Windows.Forms.Button();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.manageEmploees = new System.Windows.Forms.TabPage();
+            this.atmsPage = new System.Windows.Forms.TabPage();
+            this.routesPage = new System.Windows.Forms.TabPage();
             this.buttonsPanel = new System.Windows.Forms.Panel();
             this.ManageRoutes = new System.Windows.Forms.Button();
             this.ManageATMs = new System.Windows.Forms.Button();
             this.ButtonSelector = new System.Windows.Forms.Panel();
             this.employees = new System.Windows.Forms.Button();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.formBorder.SuspendLayout();
-            this.buttonsPanel.SuspendLayout();
             this.tabControl.SuspendLayout();
+            this.buttonsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // formBorder
@@ -46,7 +47,6 @@
             this.formBorder.Controls.Add(this.panel1);
             this.formBorder.Controls.Add(this.FrameLabel);
             this.formBorder.Controls.Add(this.closeForm);
-            this.formBorder.Controls.Add(this.tabControl);
             this.formBorder.Location = new System.Drawing.Point(-2, -2);
             this.formBorder.Name = "formBorder";
             this.formBorder.Size = new System.Drawing.Size(1101, 49);
@@ -89,6 +89,46 @@
             this.closeForm.Text = "X";
             this.closeForm.UseVisualStyleBackColor = false;
             this.closeForm.Click += new System.EventHandler(this.closeForm_Click);
+            // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this.manageEmploees);
+            this.tabControl.Controls.Add(this.atmsPage);
+            this.tabControl.Controls.Add(this.routesPage);
+            this.tabControl.Location = new System.Drawing.Point(278, 12);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(823, 741);
+            this.tabControl.TabIndex = 2;
+            // 
+            // manageEmploees
+            // 
+            this.manageEmploees.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.manageEmploees.Location = new System.Drawing.Point(4, 25);
+            this.manageEmploees.Name = "manageEmploees";
+            this.manageEmploees.Padding = new System.Windows.Forms.Padding(3);
+            this.manageEmploees.Size = new System.Drawing.Size(813, 702);
+            this.manageEmploees.TabIndex = 0;
+            // 
+            // atmsPage
+            // 
+            this.atmsPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(232)))));
+            this.atmsPage.Location = new System.Drawing.Point(4, 25);
+            this.atmsPage.Name = "atmsPage";
+            this.atmsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.atmsPage.Size = new System.Drawing.Size(813, 702);
+            this.atmsPage.TabIndex = 1;
+            this.atmsPage.Text = "atmsPage";
+            // 
+            // routesPage
+            // 
+            this.routesPage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
+            this.routesPage.Location = new System.Drawing.Point(4, 25);
+            this.routesPage.Name = "routesPage";
+            this.routesPage.Padding = new System.Windows.Forms.Padding(3);
+            this.routesPage.Size = new System.Drawing.Size(813, 702);
+            this.routesPage.TabIndex = 1;
+            this.routesPage.Text = "RoutesPage";
             // 
             // buttonsPanel
             // 
@@ -140,52 +180,22 @@
             this.employees.UseVisualStyleBackColor = true;
             this.employees.Click += new System.EventHandler(this.employees_Click);
             // 
-            // tabControl
-            // 
-            this.tabControl.Controls.Add(this.tabPage1);
-            this.tabControl.Controls.Add(this.tabPage2);
-            this.tabControl.Location = new System.Drawing.Point(278, 12);
-            this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(821, 729);
-            this.tabControl.TabIndex = 2;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(813, 700);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 71);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // AdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1095, 741);
-            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.buttonsPanel);
             this.Controls.Add(this.formBorder);
+            this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "AdminPage";
             this.Text = "NSecurity";
             this.formBorder.ResumeLayout(false);
             this.formBorder.PerformLayout();
-            this.buttonsPanel.ResumeLayout(false);
             this.tabControl.ResumeLayout(false);
+            this.buttonsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -202,8 +212,9 @@
         private System.Windows.Forms.Button ManageATMs;
         private System.Windows.Forms.Panel ButtonSelector;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage manageEmploees;
+        private System.Windows.Forms.TabPage atmsPage;
+        private System.Windows.Forms.TabPage routesPage;
     }
 }
 

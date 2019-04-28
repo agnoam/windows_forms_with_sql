@@ -44,13 +44,15 @@ namespace FinalProject_2019 {
                 MySqlDataReader dataReader = cmd.ExecuteReader();
 
                 while (dataReader.Read()) {
-                    Console.WriteLine(String.Format("ID: {0}, address: {1}, capacity: {2}, atm_size: {3}, brand: {4}",
-                        dataReader["id"].ToString(),
-                        dataReader["address"].ToString(),
-                        dataReader["capacity"].ToString(),
-                        dataReader["atm_size"].ToString(),
-                        dataReader["brand"].ToString()
-                    ));
+                    if(dataReader != null) {
+                        Console.WriteLine(String.Format("ID: {0}, address: {1}, capacity: {2}, atm_size: {3}, brand: {4}",
+                            dataReader["id"].ToString(),
+                            dataReader["address"].ToString(),
+                            dataReader["capacity"].ToString(),
+                            dataReader["atm_size"].ToString(),
+                            dataReader["brand"].ToString()
+                        ));
+                    }
                 }
 
                 dataReader.Close();
