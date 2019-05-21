@@ -1,4 +1,6 @@
-﻿namespace FinalProject_2019 {
+﻿using FinalProject_2019.Pages;
+
+namespace FinalProject_2019 {
     partial class AdminPage {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +30,7 @@
             this.FrameLabel = new System.Windows.Forms.Label();
             this.closeForm = new System.Windows.Forms.Button();
             this.tabControl = new System.Windows.Forms.TabControl();
-            this.manageEmploees = new System.Windows.Forms.TabPage();
+            this.manageEmployees = new System.Windows.Forms.TabPage();
             this.atmsPage = new System.Windows.Forms.TabPage();
             this.routesPage = new System.Windows.Forms.TabPage();
             this.buttonsPanel = new System.Windows.Forms.Panel();
@@ -92,7 +94,7 @@
             // 
             // tabControl
             // 
-            this.tabControl.Controls.Add(this.manageEmploees);
+            this.tabControl.Controls.Add(this.manageEmployees);
             this.tabControl.Controls.Add(this.atmsPage);
             this.tabControl.Controls.Add(this.routesPage);
             this.tabControl.Location = new System.Drawing.Point(278, 12);
@@ -101,14 +103,14 @@
             this.tabControl.Size = new System.Drawing.Size(823, 741);
             this.tabControl.TabIndex = 2;
             // 
-            // manageEmploees
+            // manageEmployees
             // 
-            this.manageEmploees.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.manageEmploees.Location = new System.Drawing.Point(4, 25);
-            this.manageEmploees.Name = "manageEmploees";
-            this.manageEmploees.Padding = new System.Windows.Forms.Padding(3);
-            this.manageEmploees.Size = new System.Drawing.Size(813, 702);
-            this.manageEmploees.TabIndex = 0;
+            this.manageEmployees.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.manageEmployees.Location = new System.Drawing.Point(4, 25);
+            this.manageEmployees.Name = "manageEmployees";
+            this.manageEmployees.Padding = new System.Windows.Forms.Padding(3);
+            this.manageEmployees.Size = new System.Drawing.Size(813, 702);
+            this.manageEmployees.TabIndex = 0;
             // 
             // atmsPage
             // 
@@ -119,6 +121,7 @@
             this.atmsPage.Size = new System.Drawing.Size(813, 702);
             this.atmsPage.TabIndex = 1;
             this.atmsPage.Text = "atmsPage";
+            this.atmsPage.Controls.Add(null);
             // 
             // routesPage
             // 
@@ -212,7 +215,7 @@
         private System.Windows.Forms.Button ManageATMs;
         private System.Windows.Forms.Panel ButtonSelector;
         private System.Windows.Forms.TabControl tabControl;
-        private System.Windows.Forms.TabPage manageEmploees;
+        private System.Windows.Forms.TabPage manageEmployees;
         private System.Windows.Forms.TabPage atmsPage;
         private System.Windows.Forms.TabPage routesPage;
     }

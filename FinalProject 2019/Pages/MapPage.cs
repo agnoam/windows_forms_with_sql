@@ -18,7 +18,7 @@ namespace FinalProject_2019.Pages {
         private bool mouseDown;
         private Point lastLocation;
 
-        public MapPage() {
+        public MapPage(AdminPage adminPage) {
             InitializeComponent();
 
             loadGoogleMaps();
