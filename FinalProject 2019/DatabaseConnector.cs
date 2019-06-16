@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Linq;
-using System.Text;
-using FinalProject_2019.UI;
 
 namespace FinalProject_2019 {
     class DatabaseConnector {
@@ -130,7 +127,7 @@ namespace FinalProject_2019 {
             Console.WriteLine("new ATM has been created");
         }
 
-        public void addNewEmploeey(Emploeey newEmp) {
+        public bool addNewEmploeey(Emploeey newEmp) {
             connect();
 
             string addressInsertCommand = $"INSERT INTO Addresses (street, house_num, city, zip_code, lat, lng) VALUES ('{newEmp.address.street}', {newEmp.address.house_num}, '{newEmp.address.city}', '{newEmp.address.zip_code}', {newEmp.address.lat}, {newEmp.address.lng})";
@@ -156,12 +153,18 @@ namespace FinalProject_2019 {
                 addrsCommand.ExecuteNonQuery();
                 int addrsID = int.Parse(getAddressID.ExecuteScalar().ToString());
 
-                string newEmpString = $"INSERT INTO Employees (name, birth_date, role, username, password, phone_number, email, gender, Addresses_id) VALUES ('{newEmp.name}', '{newEmp.birthDate.ToString()}', '{newEmp.role}', '{newEmp.username}', '{newEmp.password}', '{newEmp.phone_number}', '{newEmp.email}', '{newEmp.gender}', {addrsID})";
+                string newEmpString = $"INSERT INTO Employees (id, name, birth_date, role, username, password, phone_number, email, gender, Addresses_id) VALUES ('{newEmp.id}', '{newEmp.name}', '{newEmp.birthDate.ToString()}', '{newEmp.role}', '{newEmp.username}', '{newEmp.password}', '{newEmp.phone_number}', '{newEmp.email}', '{newEmp.gender}', {addrsID})";
                 newAtmCommand.CommandText = newEmpString;
                 newAtmCommand.CommandType = CommandType.Text;
 
                 newAtmCommand.ExecuteNonQuery();
             } catch (MySqlException ex) {
+                if(ex.ErrorCode == -2147467259) {
+                    // User duplicated
+                    Console.WriteLine("User duplicated -> user already created");
+                    return false;
+                }
+
                 throw ex;
             }
 
@@ -169,6 +172,46 @@ namespace FinalProject_2019 {
             conn.Close();
 
             Console.WriteLine("new Emploeey has been created");
+            return true;
+        }
+
+        public void getBusyestDay(int atmID) {
+            
+        }
+
+        public Track calculateRoute(ATM[] atms) {
+            double southestLat = 91.0; // Buffer data
+            double southestLng = -181.0; // Buffer data
+            
+            // Get the southest point
+            for(int i = 0; i < atms.Length; i++) {
+                if(southestLng == -181.0) {
+                    southestLng = atms[i].address.lng;
+                    southestLat = atms[i].address.lat;
+                } else {
+                    if(southestLng > atms[i].address.lng) {
+                        southestLng = atms[i].address.lng;
+                        southestLat = atms[i].address.lat;
+                    }
+                }
+            }
+
+            // Calculating the distance between southest coord and the atm's location
+            for(int i = 0; i < atms.Length; i++) {
+                GetDistance(southestLng, southestLng, atms[i].address.lng, atms[i].address.lat);
+            }
+
+            return null;
+        }
+
+        private double GetDistance(double longitude, double latitude, double otherLongitude, double otherLatitude) {
+            var d1 = latitude * (Math.PI / 180.0);
+            var num1 = longitude * (Math.PI / 180.0);
+            var d2 = otherLatitude * (Math.PI / 180.0);
+            var num2 = otherLongitude * (Math.PI / 180.0) - num1;
+            var d3 = Math.Pow(Math.Sin((d2 - d1) / 2.0), 2.0) + Math.Cos(d1) * Math.Cos(d2) * Math.Pow(Math.Sin(num2 / 2.0), 2.0);
+
+            return 6376500.0 * (2.0 * Math.Atan2(Math.Sqrt(d3), Math.Sqrt(1.0 - d3)));
         }
     }
 
@@ -200,16 +243,19 @@ namespace FinalProject_2019 {
         public int capacity { get; set; }
         public int size { get; set; }
         public string brand { get; set; }
+        public int live_money_avilable { get; set; }
 
         public ATM(Address _address, int _capacity, int _size, string _brand) {
             address = _address;
             capacity = _capacity;
+            live_money_avilable = _capacity;
             size = _size;
             brand = _brand;
         }
     }
 
     class Emploeey {
+        public string id { get; set; }
         public string name { get; set; }
         public SqlDate birthDate {get; set;}
         public string role { get; set; }
@@ -220,62 +266,94 @@ namespace FinalProject_2019 {
         public string gender { get; set; }
         public Address address { get; set; }
 
-        public Emploeey(string _name, SqlDate _birthDate, string _role, string _username, string _gender, Address _address) {
+        public Emploeey(string _id,  string _name, SqlDate _birthDate, string _role, string _username, string _phone_number, string _gender, Address _address) {
+            if(_id.Length == 9) {
+                id = _id;
+            } else {
+                throw new Exception("Inserted id is not vaild");
+            }
+
             name = _name;
             birthDate = _birthDate;
             role = _role;
             username = _username;
             password = "1234abcd";
+            phone_number = _phone_number;
             email = $"{username}@nsec.com";
             gender = _gender;
             address = _address;
         }
     }
 
-    class SqlDate {
-        public string year { get; set; }
-        public string month { get; set; }
-        public string day { get; set; }
+    class Car {
+        public string code { get; set; }
+        public string model { get; set; }
+        public SqlDate creation_date { get; set; }
+        public int driver_id { get; set; }
 
-        public SqlDate(string _year, string _month, string _day) {
-            int[] yearArr = toIntArr(_year);
-            int[] monthArr = toIntArr(_month);
-            int[] dayArr = toIntArr(_day);
-
-            if (yearArr.Length != 4) {
-                throw new Exception("Year must be 4 digits");
-            } else if (monthArr.Length != 2) {
-                throw new Exception("Month must be 2 digits");
-            } else if(dayArr.Length != 2) {
-                throw new Exception("Day must be 2 digits");
-            } else {
-                if (monthArr[0] <= 1) {
-                    if(monthArr[0] == 1 && monthArr[1] > 2) {
-                        throw new Exception("Month cannot be more than 12");
-                    }
-                } else if(monthArr[0] == 0 && monthArr[1] == 0) {
-                    throw new Exception("Month cannot be 00");
-                }
-
-                if(dayArr[0] != 0 && dayArr[1] > 7) {
-                    throw new Exception("Day cannot be more than 7");
-                }
-            }
+        public Car(string _code, string _model, SqlDate _creation_date, int _driver_id) {
+            code = _code;
+            model = _model;
+            creation_date = _creation_date;
+            driver_id = _driver_id;
         }
+    }
 
-        private int[] toIntArr(string str) {
-            char[] arr = str.ToArray();
-            int[] returnArr = new int[arr.Length];
+    class Track {
+        public ATM[] atms { get; set; }
+        public bool is_done { get; set; }
+        public SqlDate date { get; set; }
+        public string car_id { get; set; }
+        public string employee_id { get; set; }
+        public string manager_id { get; set; }
 
-            for (int i = 0; i < arr.Length; i++) {
-                returnArr[i] = int.Parse(arr[i].ToString());
+        public Track(ATM[] _atms, bool _idDone, SqlDate _date, string _carID, string _empID, string _mgrID) {
+            atms = _atms;
+            is_done = _idDone;
+            date = _date;
+            car_id = _carID;
+            employee_id = _empID;
+            manager_id = _mgrID;
+        }
+    }
+
+    class SqlDate {
+        public int year { get; set; }
+        public int month { get; set; }
+        public int day { get; set; }
+
+        public SqlDate(int _day, int _month, int _year) {
+            if(_day <= 31 && _month <= 12 && _year > 1900) {
+                day = _day;
+                month = _month;
+                year = _year;
+            } else {
+                throw new Exception("Inserted values cannot be a valid day, Please check the values and try again");
             }
-
-            return returnArr;
         }
 
         public override string ToString() {
-            return $"{year}-{month}-{day}";
+            if(day < 10) {
+                if(month < 10) {
+                    return $"{year}-0{month}-0{day}";
+                }
+
+                return $"{year}-{month}-0{day}";
+            } else if(month < 10) {
+                return $"{year}-0{month}-{day}";
+            } else {
+                return $"{year}-{month}-{day}";
+            }
         }
+    }
+
+    class Gender {
+        public static string MALE = "M";
+        public static string FEMALE = "F";
+    }
+
+    class Roles {
+        public static string ADMIN = "ADMIN";
+        public static string EMPLOYEE = "EMP";
     }
 }

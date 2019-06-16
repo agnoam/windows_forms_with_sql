@@ -13,7 +13,13 @@ namespace FinalProject_2019 {
         public AdminPage() {
             InitializeComponent();
 
+            // Select employees tab
             employees_Click(null, null);
+
+            SqlDate bDate = new SqlDate(1, 1, 1975);
+            Address add = new Address("test", 0, "test", "000000", 0.0, 0.0);
+            Emploeey emp = new Emploeey("000000100", "Jhon p", bDate, "user", "testJhon", "0502123649", Gender.MALE, add);
+            new DatabaseConnector().addNewEmploeey(emp);
         }
 
         private void closeForm_Click(object sender, EventArgs e) {

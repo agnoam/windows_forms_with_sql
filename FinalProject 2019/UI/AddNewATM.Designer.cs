@@ -44,95 +44,106 @@
             // 
             // atmStreet
             // 
-            this.atmStreet.Location = new System.Drawing.Point(39, 76);
+            this.atmStreet.Location = new System.Drawing.Point(52, 94);
+            this.atmStreet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.atmStreet.Name = "atmStreet";
-            this.atmStreet.Size = new System.Drawing.Size(100, 20);
+            this.atmStreet.Size = new System.Drawing.Size(132, 22);
             this.atmStreet.TabIndex = 0;
             this.atmStreet.TextChanged += new System.EventHandler(this.atmStreet_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 29);
+            this.label1.Location = new System.Drawing.Point(12, 36);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 13);
+            this.label1.Size = new System.Drawing.Size(102, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "ATM\'s address";
             // 
             // houseNum
             // 
             this.houseNum.AutoSize = true;
-            this.houseNum.Location = new System.Drawing.Point(36, 106);
+            this.houseNum.Location = new System.Drawing.Point(48, 130);
+            this.houseNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.houseNum.Name = "houseNum";
-            this.houseNum.Size = new System.Drawing.Size(76, 13);
+            this.houseNum.Size = new System.Drawing.Size(101, 17);
             this.houseNum.TabIndex = 3;
             this.houseNum.Text = "House number";
             // 
             // atmHouseNum
             // 
-            this.atmHouseNum.Location = new System.Drawing.Point(39, 122);
+            this.atmHouseNum.Location = new System.Drawing.Point(52, 150);
+            this.atmHouseNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.atmHouseNum.Name = "atmHouseNum";
-            this.atmHouseNum.Size = new System.Drawing.Size(100, 20);
+            this.atmHouseNum.Size = new System.Drawing.Size(132, 22);
             this.atmHouseNum.TabIndex = 2;
             this.atmHouseNum.TextChanged += new System.EventHandler(this.atmHouseNum_TextChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(36, 60);
+            this.label2.Location = new System.Drawing.Point(48, 74);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(46, 17);
             this.label2.TabIndex = 4;
             this.label2.Text = "Street";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(36, 153);
+            this.label3.Location = new System.Drawing.Point(48, 188);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(24, 13);
+            this.label3.Size = new System.Drawing.Size(31, 17);
             this.label3.TabIndex = 6;
             this.label3.Text = "City";
             // 
             // atmCity
             // 
-            this.atmCity.Location = new System.Drawing.Point(39, 169);
+            this.atmCity.Location = new System.Drawing.Point(52, 208);
+            this.atmCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.atmCity.Name = "atmCity";
-            this.atmCity.Size = new System.Drawing.Size(100, 20);
+            this.atmCity.Size = new System.Drawing.Size(132, 22);
             this.atmCity.TabIndex = 5;
             this.atmCity.TextChanged += new System.EventHandler(this.atmCity_TextChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(36, 200);
+            this.label4.Location = new System.Drawing.Point(48, 246);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.Size = new System.Drawing.Size(64, 17);
             this.label4.TabIndex = 8;
             this.label4.Text = "ZIP code";
             // 
             // atmZipCode
             // 
-            this.atmZipCode.Location = new System.Drawing.Point(39, 216);
+            this.atmZipCode.Location = new System.Drawing.Point(52, 266);
+            this.atmZipCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.atmZipCode.Name = "atmZipCode";
-            this.atmZipCode.Size = new System.Drawing.Size(100, 20);
+            this.atmZipCode.Size = new System.Drawing.Size(132, 22);
             this.atmZipCode.TabIndex = 7;
             this.atmZipCode.TextChanged += new System.EventHandler(this.atmZipCode_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(209, 28);
+            this.label5.Location = new System.Drawing.Point(279, 34);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.Size = new System.Drawing.Size(92, 17);
             this.label5.TabIndex = 9;
             this.label5.Text = "ATM\'s details";
             // 
             // addNewATMButton
             // 
-            this.addNewATMButton.Location = new System.Drawing.Point(513, 331);
+            this.addNewATMButton.Location = new System.Drawing.Point(684, 407);
+            this.addNewATMButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addNewATMButton.Name = "addNewATMButton";
-            this.addNewATMButton.Size = new System.Drawing.Size(75, 23);
+            this.addNewATMButton.Size = new System.Drawing.Size(100, 28);
             this.addNewATMButton.TabIndex = 10;
             this.addNewATMButton.Text = "Submit";
             this.addNewATMButton.UseVisualStyleBackColor = true;
@@ -141,42 +152,48 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(236, 60);
+            this.label6.Location = new System.Drawing.Point(315, 74);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.Size = new System.Drawing.Size(62, 17);
             this.label6.TabIndex = 14;
             this.label6.Text = "Capacity";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(236, 106);
+            this.label7.Location = new System.Drawing.Point(315, 130);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.Size = new System.Drawing.Size(46, 17);
             this.label7.TabIndex = 13;
             this.label7.Text = "Brand";
             // 
             // atmBrand
             // 
-            this.atmBrand.Location = new System.Drawing.Point(239, 122);
+            this.atmBrand.Location = new System.Drawing.Point(319, 150);
+            this.atmBrand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.atmBrand.Name = "atmBrand";
-            this.atmBrand.Size = new System.Drawing.Size(100, 20);
+            this.atmBrand.Size = new System.Drawing.Size(132, 22);
             this.atmBrand.TabIndex = 12;
+            this.atmBrand.TextChanged += new System.EventHandler(this.atmBrand_TextChanged);
             // 
             // atmCapacity
             // 
-            this.atmCapacity.Location = new System.Drawing.Point(239, 76);
+            this.atmCapacity.Location = new System.Drawing.Point(319, 94);
+            this.atmCapacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.atmCapacity.Name = "atmCapacity";
-            this.atmCapacity.Size = new System.Drawing.Size(100, 20);
+            this.atmCapacity.Size = new System.Drawing.Size(132, 22);
             this.atmCapacity.TabIndex = 11;
             this.atmCapacity.TextChanged += new System.EventHandler(this.atmCapacity_TextChanged);
             // 
             // wideATM
             // 
             this.wideATM.AutoSize = true;
-            this.wideATM.Location = new System.Drawing.Point(239, 169);
+            this.wideATM.Location = new System.Drawing.Point(319, 208);
+            this.wideATM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.wideATM.Name = "wideATM";
-            this.wideATM.Size = new System.Drawing.Size(106, 17);
+            this.wideATM.Size = new System.Drawing.Size(135, 21);
             this.wideATM.TabIndex = 15;
             this.wideATM.TabStop = true;
             this.wideATM.Text = "Wide ATM (Wall)";
@@ -186,9 +203,10 @@
             // singleATM
             // 
             this.singleATM.AutoSize = true;
-            this.singleATM.Location = new System.Drawing.Point(351, 169);
+            this.singleATM.Location = new System.Drawing.Point(468, 208);
+            this.singleATM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.singleATM.Name = "singleATM";
-            this.singleATM.Size = new System.Drawing.Size(110, 17);
+            this.singleATM.Size = new System.Drawing.Size(143, 21);
             this.singleATM.TabIndex = 16;
             this.singleATM.TabStop = true;
             this.singleATM.Text = "Thin ATM (Single)";
@@ -197,9 +215,9 @@
             // 
             // AddNewATM
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.singleATM);
             this.Controls.Add(this.wideATM);
             this.Controls.Add(this.label6);
@@ -217,7 +235,7 @@
             this.Controls.Add(this.atmHouseNum);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.atmStreet);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddNewATM";
             this.Text = "Add new ATM";
             this.ResumeLayout(false);

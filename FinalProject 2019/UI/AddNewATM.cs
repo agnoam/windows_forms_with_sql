@@ -59,6 +59,10 @@ namespace FinalProject_2019.UI {
             }
         }
 
+        private void atmBrand_TextChanged(object sender, EventArgs e) {
+            brand = atmBrand.Text;
+        }
+
         private bool isEmpty(string str) {
             if(str != null && str != "") {
                 return true;

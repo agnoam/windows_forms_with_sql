@@ -134,6 +134,12 @@
     <Compile Include="UI\AddNewATM.Designer.cs">
       <DependentUpon>AddNewATM.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\AddNewEmploeey.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AddNewEmploeey.Designer.cs">
+      <DependentUpon>AddNewEmploeey.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Pages\AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
     </EmbeddedResource>
