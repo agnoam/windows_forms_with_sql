@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalProject_2019.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,11 +27,11 @@ namespace FinalProject_2019.TabsContent {
 
         private void showDialogBox() {
             
-            
         }
 
         private void addATM_Click(object sender, EventArgs e) {
-
+            AddNewATM addAtmsPage = new AddNewATM();
+            addAtmsPage.Show();
         }
     }
 }

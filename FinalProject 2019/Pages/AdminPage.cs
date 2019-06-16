@@ -1,6 +1,7 @@
 ﻿using FinalProject_2019.Pages;
 using FinalProject_2019.TabsContent;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -16,10 +17,30 @@ namespace FinalProject_2019 {
             // Select employees tab
             employees_Click(null, null);
 
-            SqlDate bDate = new SqlDate(1, 1, 1975);
-            Address add = new Address("test", 0, "test", "000000", 0.0, 0.0);
-            Emploeey emp = new Emploeey("000000100", "Jhon p", bDate, "user", "testJhon", "0502123649", Gender.MALE, add);
-            new DatabaseConnector().addNewEmploeey(emp);
+            // SqlDate bDate = new SqlDate(1, 1, 1975);
+            // Address add = new Address("test", 0, "test", "000000", 0.0, 0.0);
+            // Emploeey emp = new Emploeey("000000100", "Jhon p", bDate, "user", "testJhon", "0502123649", Gender.MALE, add);
+            // new DatabaseConnector().addNewEmploeey(emp);
+
+            List<LatLng> list = new List<LatLng>();
+            list.Add(new LatLng(0.0, -2.0)); // D
+            list.Add(new LatLng(0.0, 8.0)); // D
+            list.Add(new LatLng(-1.0, 3.0)); // A
+            list.Add(new LatLng(4.0, 0.0)); // C
+            list.Add(new LatLng(0.0, 7.0)); // D
+            list.Add(new LatLng(-2.0, 1.0)); // B
+            list.Add(new LatLng(0.0, 5.0)); // D
+            list.Add(new LatLng(5.0, 0.0)); // D
+            list.Add(new LatLng(6.0, 0.0)); // D
+            list.Add(new LatLng(7.0, 0.0)); // D
+            
+
+            Console.WriteLine(list.Count);
+
+            List<LatLng> l = new DatabaseConnector().calcShortestTrack(list);
+            for(int i = 0; i < l.Count; i++) {
+                Console.WriteLine(l[i].ToString());
+            }
         }
 
         private void closeForm_Click(object sender, EventArgs e) {
@@ -59,7 +80,7 @@ namespace FinalProject_2019 {
 
             // Loading tab's content
             // EmployeesTab m = new EmployeesTab(this, 0);
-            EmployeesTab m = new EmployeesTab();
+            EmployeesTab m = new EmployeesTab(this, 0);
             m.TopLevel = false;
 
             // Attching it to the TabPage

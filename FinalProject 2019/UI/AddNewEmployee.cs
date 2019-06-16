@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FinalProject_2019.UI {
-    public partial class AddNewEmploeey : Form {
-        public AddNewEmploeey() {
+    public partial class AddNewEmployee : Form {
+        public AddNewEmployee() {
             InitializeComponent();
         }
     }

@@ -2,6 +2,8 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 using System.Linq;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace FinalProject_2019 {
     class DatabaseConnector {
@@ -112,7 +114,7 @@ namespace FinalProject_2019 {
                 addrsCommand.ExecuteNonQuery();
                 int addrsID = int.Parse(getAddressID.ExecuteScalar().ToString());
                 
-                string newAtmString = $"INSERT INTO Atms (capacity, atm_size, brand, Addresses_id) VALUES ('{newATM.capacity}', '{newATM.size}', '{newATM.brand}', '{addrsID}')";
+                string newAtmString = $"INSERT INTO Atms (capacity, live_money_avilable, atm_size, brand, Addresses_id) VALUES ('{newATM.capacity}', '{newATM.live_money_avilable}', '{newATM.size}', '{newATM.brand}', {addrsID})";
                 newAtmCommand.CommandText = newAtmString;
                 newAtmCommand.CommandType = CommandType.Text;
 
@@ -175,43 +177,61 @@ namespace FinalProject_2019 {
             return true;
         }
 
+        public DataSet getAllTable(string tableName) {
+            connect();
+
+            string query = $"SELECT * FROM {tableName};";
+
+            using(conn) {
+                using(MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn)) {
+                    DataSet ds = new DataSet();
+                    adapter.Fill(ds);
+
+                    return ds;
+                }
+            }
+        }
+
         public void getBusyestDay(int atmID) {
             
         }
 
-        public Track calculateRoute(ATM[] atms) {
-            double southestLat = 91.0; // Buffer data
-            double southestLng = -181.0; // Buffer data
-            
-            // Get the southest point
-            for(int i = 0; i < atms.Length; i++) {
-                if(southestLng == -181.0) {
-                    southestLng = atms[i].address.lng;
-                    southestLat = atms[i].address.lat;
-                } else {
-                    if(southestLng > atms[i].address.lng) {
-                        southestLng = atms[i].address.lng;
-                        southestLat = atms[i].address.lat;
+        public List<LatLng> calcShortestTrack(List<LatLng> atmPoints) {
+            Console.WriteLine($"in: {atmPoints.ToString()}");
+            if (atmPoints.Count != 1) {
+                // Starting point to check from
+                LatLng startingPoint = atmPoints[0];
+                LatLng nextPoint = new LatLng(0.0, 0.0);
+                double minDistance = -1.0;
+
+                for(int i = 1; i < atmPoints.Count; i++) {
+                    if(minDistance == -1.0) {
+                        minDistance = startingPoint.getDistance(atmPoints[i]);
+                        nextPoint = atmPoints[i];
+                    } else {
+                        double dis = startingPoint.getDistance(atmPoints[i]);
+                        if(minDistance > dis) {
+                            minDistance = dis;
+                            nextPoint = atmPoints[i];
+                        }
                     }
                 }
+
+                // Removing the starting point
+                atmPoints.Remove(startingPoint);
+                
+                // Moving the next point to the top of the list
+                atmPoints.Remove(nextPoint);
+                atmPoints.Insert(0, nextPoint);
+
+                Console.WriteLine($"out: {atmPoints.ToString()}");
+
+                List<LatLng> toReturn = calcShortestTrack(atmPoints);
+                toReturn.Insert(0, startingPoint);
+                return toReturn;
             }
 
-            // Calculating the distance between southest coord and the atm's location
-            for(int i = 0; i < atms.Length; i++) {
-                GetDistance(southestLng, southestLng, atms[i].address.lng, atms[i].address.lat);
-            }
-
-            return null;
-        }
-
-        private double GetDistance(double longitude, double latitude, double otherLongitude, double otherLatitude) {
-            var d1 = latitude * (Math.PI / 180.0);
-            var num1 = longitude * (Math.PI / 180.0);
-            var d2 = otherLatitude * (Math.PI / 180.0);
-            var num2 = otherLongitude * (Math.PI / 180.0) - num1;
-            var d3 = Math.Pow(Math.Sin((d2 - d1) / 2.0), 2.0) + Math.Cos(d1) * Math.Cos(d2) * Math.Pow(Math.Sin(num2 / 2.0), 2.0);
-
-            return 6376500.0 * (2.0 * Math.Atan2(Math.Sqrt(d3), Math.Sqrt(1.0 - d3)));
+            return atmPoints;
         }
     }
 
@@ -307,13 +327,13 @@ namespace FinalProject_2019 {
         public string employee_id { get; set; }
         public string manager_id { get; set; }
 
-        public Track(ATM[] _atms, bool _idDone, SqlDate _date, string _carID, string _empID, string _mgrID) {
-            atms = _atms;
-            is_done = _idDone;
-            date = _date;
-            car_id = _carID;
-            employee_id = _empID;
-            manager_id = _mgrID;
+        public Track(ATM[] atms_c, bool idDone_c, SqlDate date_C, string carID_c, string empID_c, string mgrID_c) {
+            atms = atms_c;
+            is_done = idDone_c;
+            date = date_C;
+            car_id = carID_c;
+            employee_id = empID_c;
+            manager_id = mgrID_c;
         }
     }
 
@@ -355,5 +375,39 @@ namespace FinalProject_2019 {
     class Roles {
         public static string ADMIN = "ADMIN";
         public static string EMPLOYEE = "EMP";
+    }
+
+    class LatLng {
+        public double lat { get; set; }
+        public double lng { get; set; }
+
+        public LatLng(double lat_c, double lng_c) {
+            lat = lat_c;
+            lng = lng_c;
+        }
+
+        public static double getDistance(LatLng point1, LatLng point2) {
+            var d1 = point1.lat * (Math.PI / 180.0);
+            var num1 = point1.lng * (Math.PI / 180.0);
+            var d2 = point2.lat * (Math.PI / 180.0);
+            var num2 = point2.lng * (Math.PI / 180.0) - num1;
+            var d3 = Math.Pow(Math.Sin((d2 - d1) / 2.0), 2.0) + Math.Cos(d1) * Math.Cos(d2) * Math.Pow(Math.Sin(num2 / 2.0), 2.0);
+
+            return 6376500.0 * (2.0 * Math.Atan2(Math.Sqrt(d3), Math.Sqrt(1.0 - d3)));
+        }
+
+        public double getDistance(LatLng latlng) {
+            var d1 = lat * (Math.PI / 180.0);
+            var num1 = lng * (Math.PI / 180.0);
+            var d2 = latlng.lat * (Math.PI / 180.0);
+            var num2 = latlng.lng * (Math.PI / 180.0) - num1;
+            var d3 = Math.Pow(Math.Sin((d2 - d1) / 2.0), 2.0) + Math.Cos(d1) * Math.Cos(d2) * Math.Pow(Math.Sin(num2 / 2.0), 2.0);
+
+            return 6376500.0 * (2.0 * Math.Atan2(Math.Sqrt(d3), Math.Sqrt(1.0 - d3)));
+        }
+
+        public override string ToString() {
+            return $"({lat}, {lng})";
+        }
     }
 }

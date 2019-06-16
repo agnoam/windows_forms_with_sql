@@ -1,5 +1,5 @@
 ﻿namespace FinalProject_2019.UI {
-    partial class AddNewEmploeey {
+    partial class AddNewEmployee {
         /// <summary>
         /// Required designer variable.
         /// </summary>
