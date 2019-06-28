@@ -1,5 +1,4 @@
-﻿using FinalProject_2019.Pages;
-using FinalProject_2019.TabsContent;
+﻿using FinalProject_2019.UI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -16,31 +15,6 @@ namespace FinalProject_2019 {
 
             // Select employees tab
             employees_Click(null, null);
-
-            // SqlDate bDate = new SqlDate(1, 1, 1975);
-            // Address add = new Address("test", 0, "test", "000000", 0.0, 0.0);
-            // Emploeey emp = new Emploeey("000000100", "Jhon p", bDate, "user", "testJhon", "0502123649", Gender.MALE, add);
-            // new DatabaseConnector().addNewEmploeey(emp);
-
-            List<LatLng> list = new List<LatLng>();
-            list.Add(new LatLng(0.0, -2.0)); // D
-            list.Add(new LatLng(0.0, 8.0)); // D
-            list.Add(new LatLng(-1.0, 3.0)); // A
-            list.Add(new LatLng(4.0, 0.0)); // C
-            list.Add(new LatLng(0.0, 7.0)); // D
-            list.Add(new LatLng(-2.0, 1.0)); // B
-            list.Add(new LatLng(0.0, 5.0)); // D
-            list.Add(new LatLng(5.0, 0.0)); // D
-            list.Add(new LatLng(6.0, 0.0)); // D
-            list.Add(new LatLng(7.0, 0.0)); // D
-            
-
-            Console.WriteLine(list.Count);
-
-            List<LatLng> l = new DatabaseConnector().calcShortestTrack(list);
-            for(int i = 0; i < l.Count; i++) {
-                Console.WriteLine(l[i].ToString());
-            }
         }
 
         private void closeForm_Click(object sender, EventArgs e) {
@@ -77,10 +51,10 @@ namespace FinalProject_2019 {
             // Hiding all the other tabs avilable
             tabControl.TabPages[1].Hide();
             tabControl.TabPages[2].Hide();
+            tabControl.TabPages[3].Hide();
 
             // Loading tab's content
-            // EmployeesTab m = new EmployeesTab(this, 0);
-            EmployeesTab m = new EmployeesTab(this, 0);
+            TabContent m = new TabContent(this, 0, TabChooser.Employees);
             m.TopLevel = false;
 
             // Attching it to the TabPage
@@ -105,18 +79,19 @@ namespace FinalProject_2019 {
             // Hiding all the other tabs avilable
             tabControl.TabPages[0].Hide();
             tabControl.TabPages[2].Hide();
-
+            tabControl.TabPages[3].Hide();
+            
             // Loading tab's content
-            // EmployeesTab m = new EmployeesTab(this, 1);
-            // m.TopLevel = false;
+            TabContent m = new TabContent(this, 1, TabChooser.ATM);
+            m.TopLevel = false;
 
             // Attching it to the TabPage
-            // tabControl.TabPages[1].Controls.Add(m);
+            tabControl.TabPages[1].Controls.Add(m);
 
             // Showing the content
-           // m.FormBorderStyle = FormBorderStyle.None;
-            // m.Dock = DockStyle.Fill;
-            // m.Show();
+            m.FormBorderStyle = FormBorderStyle.None;
+            m.Dock = DockStyle.Fill;
+            m.Show();
 
             // Displaying the TabPage
             tabControl.TabPages[1].Show();
@@ -133,8 +108,46 @@ namespace FinalProject_2019 {
             // Hiding all the other tabs avilable
             tabControl.TabPages[0].Hide();
             tabControl.TabPages[1].Hide();
+            tabControl.TabPages[3].Hide();
 
+            TabContent m = new TabContent(this, 2, TabChooser.Tracks);
+            m.TopLevel = false;
+            m.FormBorderStyle = FormBorderStyle.None;
+            m.Dock = DockStyle.Fill;
+            m.Show();
+
+            // Attching it to the TabPage and showing
+            tabControl.TabPages[2].Controls.Add(m);
             tabControl.TabPages[2].Show();
+        }
+
+        private void ManageCars_Click(object sender, EventArgs e) {
+            // Moving the buttonSelector
+            ButtonSelector.Top = ManageCars.Top;
+            ButtonSelector.Height = ManageCars.Height;
+
+            // Change Tab
+            tabControl.TabPages[0].Hide();
+            tabControl.TabPages[1].Hide();
+            tabControl.TabPages[2].Hide();
+
+            TabContent m = new TabContent(this, 3, TabChooser.Cars);
+            m.TopLevel = false;
+            m.FormBorderStyle = FormBorderStyle.None;
+            m.Dock = DockStyle.Fill;
+            m.Show();
+
+            // Attching it to the TabPage and showing
+            tabControl.TabPages[3].Controls.Add(m);
+            tabControl.TabPages[3].Show();
+        }
+
+        private void logoutBtn_Click(object sender, EventArgs e) {
+            LoginPage loginPage = new LoginPage();
+            loginPage.Show();
+
+            // Closes AdminPage
+            Hide();
         }
 
         public TabControl getTabControl() {

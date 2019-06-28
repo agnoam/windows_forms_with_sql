@@ -23,125 +23,132 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.atmStreet = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.houseNum = new System.Windows.Forms.Label();
-            this.atmHouseNum = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.atmCity = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.atmZipCode = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.atmStreetTextBox = new System.Windows.Forms.TextBox();
+            this.grandLabel = new System.Windows.Forms.Label();
+            this.houseNumLabel = new System.Windows.Forms.Label();
+            this.atmHouseNumTextBox = new System.Windows.Forms.TextBox();
+            this.streetLabel = new System.Windows.Forms.Label();
+            this.cityLabel = new System.Windows.Forms.Label();
+            this.atmCityTextBox = new System.Windows.Forms.TextBox();
+            this.zipcodeLabel = new System.Windows.Forms.Label();
+            this.atmZipCodeTextBox = new System.Windows.Forms.TextBox();
+            this.secondGrandLabel = new System.Windows.Forms.Label();
             this.addNewATMButton = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.atmBrand = new System.Windows.Forms.TextBox();
+            this.capacityLabel = new System.Windows.Forms.Label();
+            this.brandLabel = new System.Windows.Forms.Label();
+            this.atmBrandTextBox = new System.Windows.Forms.TextBox();
             this.atmCapacity = new System.Windows.Forms.TextBox();
-            this.wideATM = new System.Windows.Forms.RadioButton();
-            this.singleATM = new System.Windows.Forms.RadioButton();
+            this.wideATM_Radio = new System.Windows.Forms.RadioButton();
+            this.singleATM_Radio = new System.Windows.Forms.RadioButton();
+            this.atmIdLabel = new System.Windows.Forms.Label();
+            this.atmIdTextBox = new System.Windows.Forms.TextBox();
+            this.LngLabel = new System.Windows.Forms.Label();
+            this.LngTextBox = new System.Windows.Forms.TextBox();
+            this.LatLabel = new System.Windows.Forms.Label();
+            this.LatTextBox = new System.Windows.Forms.TextBox();
+            this.instructionsLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // atmStreet
+            // atmStreetTextBox
             // 
-            this.atmStreet.Location = new System.Drawing.Point(52, 94);
-            this.atmStreet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.atmStreet.Name = "atmStreet";
-            this.atmStreet.Size = new System.Drawing.Size(132, 22);
-            this.atmStreet.TabIndex = 0;
-            this.atmStreet.TextChanged += new System.EventHandler(this.atmStreet_TextChanged);
+            this.atmStreetTextBox.Location = new System.Drawing.Point(52, 94);
+            this.atmStreetTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.atmStreetTextBox.Name = "atmStreetTextBox";
+            this.atmStreetTextBox.Size = new System.Drawing.Size(132, 22);
+            this.atmStreetTextBox.TabIndex = 0;
+            this.atmStreetTextBox.TextChanged += new System.EventHandler(this.atmStreet_TextChanged);
             // 
-            // label1
+            // grandLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 36);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 17);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "ATM\'s address";
+            this.grandLabel.AutoSize = true;
+            this.grandLabel.Location = new System.Drawing.Point(12, 36);
+            this.grandLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.grandLabel.Name = "grandLabel";
+            this.grandLabel.Size = new System.Drawing.Size(102, 17);
+            this.grandLabel.TabIndex = 1;
+            this.grandLabel.Text = "ATM\'s address";
             // 
-            // houseNum
+            // houseNumLabel
             // 
-            this.houseNum.AutoSize = true;
-            this.houseNum.Location = new System.Drawing.Point(48, 130);
-            this.houseNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.houseNum.Name = "houseNum";
-            this.houseNum.Size = new System.Drawing.Size(101, 17);
-            this.houseNum.TabIndex = 3;
-            this.houseNum.Text = "House number";
+            this.houseNumLabel.AutoSize = true;
+            this.houseNumLabel.Location = new System.Drawing.Point(48, 130);
+            this.houseNumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.houseNumLabel.Name = "houseNumLabel";
+            this.houseNumLabel.Size = new System.Drawing.Size(101, 17);
+            this.houseNumLabel.TabIndex = 3;
+            this.houseNumLabel.Text = "House number";
             // 
-            // atmHouseNum
+            // atmHouseNumTextBox
             // 
-            this.atmHouseNum.Location = new System.Drawing.Point(52, 150);
-            this.atmHouseNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.atmHouseNum.Name = "atmHouseNum";
-            this.atmHouseNum.Size = new System.Drawing.Size(132, 22);
-            this.atmHouseNum.TabIndex = 2;
-            this.atmHouseNum.TextChanged += new System.EventHandler(this.atmHouseNum_TextChanged);
+            this.atmHouseNumTextBox.Location = new System.Drawing.Point(52, 150);
+            this.atmHouseNumTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.atmHouseNumTextBox.Name = "atmHouseNumTextBox";
+            this.atmHouseNumTextBox.Size = new System.Drawing.Size(132, 22);
+            this.atmHouseNumTextBox.TabIndex = 2;
+            this.atmHouseNumTextBox.TextChanged += new System.EventHandler(this.atmHouseNum_TextChanged);
             // 
-            // label2
+            // streetLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 74);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(46, 17);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Street";
+            this.streetLabel.AutoSize = true;
+            this.streetLabel.Location = new System.Drawing.Point(48, 74);
+            this.streetLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.streetLabel.Name = "streetLabel";
+            this.streetLabel.Size = new System.Drawing.Size(46, 17);
+            this.streetLabel.TabIndex = 4;
+            this.streetLabel.Text = "Street";
             // 
-            // label3
+            // cityLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 188);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 17);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "City";
+            this.cityLabel.AutoSize = true;
+            this.cityLabel.Location = new System.Drawing.Point(48, 188);
+            this.cityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.cityLabel.Name = "cityLabel";
+            this.cityLabel.Size = new System.Drawing.Size(31, 17);
+            this.cityLabel.TabIndex = 6;
+            this.cityLabel.Text = "City";
             // 
-            // atmCity
+            // atmCityTextBox
             // 
-            this.atmCity.Location = new System.Drawing.Point(52, 208);
-            this.atmCity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.atmCity.Name = "atmCity";
-            this.atmCity.Size = new System.Drawing.Size(132, 22);
-            this.atmCity.TabIndex = 5;
-            this.atmCity.TextChanged += new System.EventHandler(this.atmCity_TextChanged);
+            this.atmCityTextBox.Location = new System.Drawing.Point(52, 208);
+            this.atmCityTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.atmCityTextBox.Name = "atmCityTextBox";
+            this.atmCityTextBox.Size = new System.Drawing.Size(132, 22);
+            this.atmCityTextBox.TabIndex = 5;
+            this.atmCityTextBox.TextChanged += new System.EventHandler(this.atmCity_TextChanged);
             // 
-            // label4
+            // zipcodeLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 246);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 17);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "ZIP code";
+            this.zipcodeLabel.AutoSize = true;
+            this.zipcodeLabel.Location = new System.Drawing.Point(48, 246);
+            this.zipcodeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.zipcodeLabel.Name = "zipcodeLabel";
+            this.zipcodeLabel.Size = new System.Drawing.Size(64, 17);
+            this.zipcodeLabel.TabIndex = 8;
+            this.zipcodeLabel.Text = "ZIP code";
             // 
-            // atmZipCode
+            // atmZipCodeTextBox
             // 
-            this.atmZipCode.Location = new System.Drawing.Point(52, 266);
-            this.atmZipCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.atmZipCode.Name = "atmZipCode";
-            this.atmZipCode.Size = new System.Drawing.Size(132, 22);
-            this.atmZipCode.TabIndex = 7;
-            this.atmZipCode.TextChanged += new System.EventHandler(this.atmZipCode_TextChanged);
+            this.atmZipCodeTextBox.Location = new System.Drawing.Point(52, 266);
+            this.atmZipCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.atmZipCodeTextBox.Name = "atmZipCodeTextBox";
+            this.atmZipCodeTextBox.Size = new System.Drawing.Size(132, 22);
+            this.atmZipCodeTextBox.TabIndex = 7;
+            this.atmZipCodeTextBox.TextChanged += new System.EventHandler(this.atmZipCode_TextChanged);
             // 
-            // label5
+            // secondGrandLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(279, 34);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 17);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "ATM\'s details";
+            this.secondGrandLabel.AutoSize = true;
+            this.secondGrandLabel.Location = new System.Drawing.Point(279, 34);
+            this.secondGrandLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.secondGrandLabel.Name = "secondGrandLabel";
+            this.secondGrandLabel.Size = new System.Drawing.Size(92, 17);
+            this.secondGrandLabel.TabIndex = 9;
+            this.secondGrandLabel.Text = "ATM\'s details";
             // 
             // addNewATMButton
             // 
             this.addNewATMButton.Location = new System.Drawing.Point(684, 407);
-            this.addNewATMButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.addNewATMButton.Margin = new System.Windows.Forms.Padding(4);
             this.addNewATMButton.Name = "addNewATMButton";
             this.addNewATMButton.Size = new System.Drawing.Size(100, 28);
             this.addNewATMButton.TabIndex = 10;
@@ -149,95 +156,167 @@
             this.addNewATMButton.UseVisualStyleBackColor = true;
             this.addNewATMButton.Click += new System.EventHandler(this.addNewATMButton_Click);
             // 
-            // label6
+            // capacityLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(315, 74);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 17);
-            this.label6.TabIndex = 14;
-            this.label6.Text = "Capacity";
+            this.capacityLabel.AutoSize = true;
+            this.capacityLabel.Location = new System.Drawing.Point(311, 74);
+            this.capacityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.capacityLabel.Name = "capacityLabel";
+            this.capacityLabel.Size = new System.Drawing.Size(62, 17);
+            this.capacityLabel.TabIndex = 14;
+            this.capacityLabel.Text = "Capacity";
             // 
-            // label7
+            // brandLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(315, 130);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Brand";
+            this.brandLabel.AutoSize = true;
+            this.brandLabel.Location = new System.Drawing.Point(311, 130);
+            this.brandLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.brandLabel.Name = "brandLabel";
+            this.brandLabel.Size = new System.Drawing.Size(46, 17);
+            this.brandLabel.TabIndex = 13;
+            this.brandLabel.Text = "Brand";
             // 
-            // atmBrand
+            // atmBrandTextBox
             // 
-            this.atmBrand.Location = new System.Drawing.Point(319, 150);
-            this.atmBrand.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.atmBrand.Name = "atmBrand";
-            this.atmBrand.Size = new System.Drawing.Size(132, 22);
-            this.atmBrand.TabIndex = 12;
-            this.atmBrand.TextChanged += new System.EventHandler(this.atmBrand_TextChanged);
+            this.atmBrandTextBox.Location = new System.Drawing.Point(315, 150);
+            this.atmBrandTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.atmBrandTextBox.Name = "atmBrandTextBox";
+            this.atmBrandTextBox.Size = new System.Drawing.Size(132, 22);
+            this.atmBrandTextBox.TabIndex = 12;
+            this.atmBrandTextBox.TextChanged += new System.EventHandler(this.atmBrand_TextChanged);
             // 
             // atmCapacity
             // 
-            this.atmCapacity.Location = new System.Drawing.Point(319, 94);
-            this.atmCapacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.atmCapacity.Location = new System.Drawing.Point(315, 94);
+            this.atmCapacity.Margin = new System.Windows.Forms.Padding(4);
             this.atmCapacity.Name = "atmCapacity";
             this.atmCapacity.Size = new System.Drawing.Size(132, 22);
             this.atmCapacity.TabIndex = 11;
             this.atmCapacity.TextChanged += new System.EventHandler(this.atmCapacity_TextChanged);
             // 
-            // wideATM
+            // wideATM_Radio
             // 
-            this.wideATM.AutoSize = true;
-            this.wideATM.Location = new System.Drawing.Point(319, 208);
-            this.wideATM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.wideATM.Name = "wideATM";
-            this.wideATM.Size = new System.Drawing.Size(135, 21);
-            this.wideATM.TabIndex = 15;
-            this.wideATM.TabStop = true;
-            this.wideATM.Text = "Wide ATM (Wall)";
-            this.wideATM.UseVisualStyleBackColor = true;
-            this.wideATM.CheckedChanged += new System.EventHandler(this.wideATM_CheckedChanged);
+            this.wideATM_Radio.AutoSize = true;
+            this.wideATM_Radio.Location = new System.Drawing.Point(315, 208);
+            this.wideATM_Radio.Margin = new System.Windows.Forms.Padding(4);
+            this.wideATM_Radio.Name = "wideATM_Radio";
+            this.wideATM_Radio.Size = new System.Drawing.Size(135, 21);
+            this.wideATM_Radio.TabIndex = 15;
+            this.wideATM_Radio.TabStop = true;
+            this.wideATM_Radio.Text = "Wide ATM (Wall)";
+            this.wideATM_Radio.UseVisualStyleBackColor = true;
+            this.wideATM_Radio.CheckedChanged += new System.EventHandler(this.wideATM_CheckedChanged);
             // 
-            // singleATM
+            // singleATM_Radio
             // 
-            this.singleATM.AutoSize = true;
-            this.singleATM.Location = new System.Drawing.Point(468, 208);
-            this.singleATM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.singleATM.Name = "singleATM";
-            this.singleATM.Size = new System.Drawing.Size(143, 21);
-            this.singleATM.TabIndex = 16;
-            this.singleATM.TabStop = true;
-            this.singleATM.Text = "Thin ATM (Single)";
-            this.singleATM.UseVisualStyleBackColor = true;
-            this.singleATM.CheckedChanged += new System.EventHandler(this.singleATM_CheckedChanged);
+            this.singleATM_Radio.AutoSize = true;
+            this.singleATM_Radio.Location = new System.Drawing.Point(464, 208);
+            this.singleATM_Radio.Margin = new System.Windows.Forms.Padding(4);
+            this.singleATM_Radio.Name = "singleATM_Radio";
+            this.singleATM_Radio.Size = new System.Drawing.Size(143, 21);
+            this.singleATM_Radio.TabIndex = 16;
+            this.singleATM_Radio.TabStop = true;
+            this.singleATM_Radio.Text = "Thin ATM (Single)";
+            this.singleATM_Radio.UseVisualStyleBackColor = true;
+            this.singleATM_Radio.CheckedChanged += new System.EventHandler(this.singleATM_CheckedChanged);
+            // 
+            // atmIdLabel
+            // 
+            this.atmIdLabel.AutoSize = true;
+            this.atmIdLabel.Location = new System.Drawing.Point(0, 0);
+            this.atmIdLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.atmIdLabel.Name = "atmIdLabel";
+            this.atmIdLabel.Size = new System.Drawing.Size(0, 17);
+            this.atmIdLabel.TabIndex = 18;
+            // 
+            // atmIdTextBox
+            // 
+            this.atmIdTextBox.Location = new System.Drawing.Point(0, 0);
+            this.atmIdTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.atmIdTextBox.Name = "atmIdTextBox";
+            this.atmIdTextBox.Size = new System.Drawing.Size(0, 22);
+            this.atmIdTextBox.TabIndex = 17;
+            // 
+            // LngLabel
+            // 
+            this.LngLabel.AutoSize = true;
+            this.LngLabel.Location = new System.Drawing.Point(48, 361);
+            this.LngLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LngLabel.Name = "LngLabel";
+            this.LngLabel.Size = new System.Drawing.Size(142, 17);
+            this.LngLabel.TabIndex = 22;
+            this.LngLabel.Text = "Longitude coordinate";
+            // 
+            // LngTextBox
+            // 
+            this.LngTextBox.Location = new System.Drawing.Point(52, 381);
+            this.LngTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.LngTextBox.Name = "LngTextBox";
+            this.LngTextBox.Size = new System.Drawing.Size(132, 22);
+            this.LngTextBox.TabIndex = 21;
+            this.LngTextBox.TextChanged += new System.EventHandler(this.LngTextBox_TextChanged);
+            // 
+            // LatLabel
+            // 
+            this.LatLabel.AutoSize = true;
+            this.LatLabel.Location = new System.Drawing.Point(48, 303);
+            this.LatLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LatLabel.Name = "LatLabel";
+            this.LatLabel.Size = new System.Drawing.Size(130, 17);
+            this.LatLabel.TabIndex = 20;
+            this.LatLabel.Text = "Latitude coordinate";
+            // 
+            // LatTextBox
+            // 
+            this.LatTextBox.Location = new System.Drawing.Point(52, 323);
+            this.LatTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.LatTextBox.Name = "LatTextBox";
+            this.LatTextBox.Size = new System.Drawing.Size(132, 22);
+            this.LatTextBox.TabIndex = 19;
+            this.LatTextBox.TextChanged += new System.EventHandler(this.LatTextBox_TextChanged);
+            // 
+            // instructionsLabel
+            // 
+            this.instructionsLabel.AutoSize = true;
+            this.instructionsLabel.Location = new System.Drawing.Point(197, 344);
+            this.instructionsLabel.Name = "instructionsLabel";
+            this.instructionsLabel.Size = new System.Drawing.Size(171, 34);
+            this.instructionsLabel.TabIndex = 23;
+            this.instructionsLabel.Text = "Must be number with 8\r\nfigures after decimal point";
             // 
             // AddNewATM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.singleATM);
-            this.Controls.Add(this.wideATM);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.atmBrand);
+            this.Controls.Add(this.instructionsLabel);
+            this.Controls.Add(this.LngLabel);
+            this.Controls.Add(this.LngTextBox);
+            this.Controls.Add(this.LatLabel);
+            this.Controls.Add(this.LatTextBox);
+            this.Controls.Add(this.atmIdLabel);
+            this.Controls.Add(this.atmIdTextBox);
+            this.Controls.Add(this.singleATM_Radio);
+            this.Controls.Add(this.wideATM_Radio);
+            this.Controls.Add(this.capacityLabel);
+            this.Controls.Add(this.brandLabel);
+            this.Controls.Add(this.atmBrandTextBox);
             this.Controls.Add(this.atmCapacity);
             this.Controls.Add(this.addNewATMButton);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.atmZipCode);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.atmCity);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.houseNum);
-            this.Controls.Add(this.atmHouseNum);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.atmStreet);
+            this.Controls.Add(this.secondGrandLabel);
+            this.Controls.Add(this.zipcodeLabel);
+            this.Controls.Add(this.atmZipCodeTextBox);
+            this.Controls.Add(this.cityLabel);
+            this.Controls.Add(this.atmCityTextBox);
+            this.Controls.Add(this.streetLabel);
+            this.Controls.Add(this.houseNumLabel);
+            this.Controls.Add(this.atmHouseNumTextBox);
+            this.Controls.Add(this.grandLabel);
+            this.Controls.Add(this.atmStreetTextBox);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AddNewATM";
             this.Text = "Add new ATM";
+            this.Load += new System.EventHandler(this.AddNewATM_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -245,22 +324,29 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox atmStreet;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label houseNum;
-        private System.Windows.Forms.TextBox atmHouseNum;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox atmCity;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox atmZipCode;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox atmStreetTextBox;
+        private System.Windows.Forms.Label grandLabel;
+        private System.Windows.Forms.Label houseNumLabel;
+        private System.Windows.Forms.TextBox atmHouseNumTextBox;
+        private System.Windows.Forms.Label streetLabel;
+        private System.Windows.Forms.Label cityLabel;
+        private System.Windows.Forms.TextBox atmCityTextBox;
+        private System.Windows.Forms.Label zipcodeLabel;
+        private System.Windows.Forms.TextBox atmZipCodeTextBox;
+        private System.Windows.Forms.Label secondGrandLabel;
         private System.Windows.Forms.Button addNewATMButton;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox atmBrand;
+        private System.Windows.Forms.Label capacityLabel;
+        private System.Windows.Forms.Label brandLabel;
+        private System.Windows.Forms.TextBox atmBrandTextBox;
         private System.Windows.Forms.TextBox atmCapacity;
-        private System.Windows.Forms.RadioButton wideATM;
-        private System.Windows.Forms.RadioButton singleATM;
+        private System.Windows.Forms.RadioButton wideATM_Radio;
+        private System.Windows.Forms.RadioButton singleATM_Radio;
+        private System.Windows.Forms.Label atmIdLabel;
+        private System.Windows.Forms.TextBox atmIdTextBox;
+        private System.Windows.Forms.Label LngLabel;
+        private System.Windows.Forms.TextBox LngTextBox;
+        private System.Windows.Forms.Label LatLabel;
+        private System.Windows.Forms.TextBox LatTextBox;
+        private System.Windows.Forms.Label instructionsLabel;
     }
 }
