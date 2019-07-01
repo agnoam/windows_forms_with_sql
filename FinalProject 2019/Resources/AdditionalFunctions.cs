@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace FinalProject_2019.Resources {
     class AdditionalFunctions {
         public static bool isEmpty(string str) {
-            if (str == null && str == "" && str == " ") {
+            if (str == null || str == "" || str == " ") {
                 return true;
             }
 
@@ -29,22 +29,15 @@ namespace FinalProject_2019.Resources {
         }
 
         public static string MD5(string text) {
-            string key = "MY_SUPER_KEY#@!*32678324_!47327";
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(text));
 
-            using (var md5 = new MD5CryptoServiceProvider()) {
-                using (var tdes = new TripleDESCryptoServiceProvider()) {
-                    tdes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
-                    tdes.Mode = CipherMode.ECB;
-                    tdes.Padding = PaddingMode.PKCS7;
-
-                    using (var transform = tdes.CreateEncryptor()) {
-                        byte[] textBytes = UTF8Encoding.UTF8.GetBytes(text);
-                        byte[] bytes = transform.TransformFinalBlock(textBytes, 0, textBytes.Length);
-                        return Convert.ToBase64String(bytes, 0, bytes.Length);
-                    }
-                }
+            for (int i = 0; i < bytes.Length; i++) {
+                hash.Append(bytes[i].ToString("x2"));
             }
-        }
 
+            return hash.ToString();
+        }
     }
 }

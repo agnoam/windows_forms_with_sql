@@ -33,8 +33,6 @@
             this.cityTextBox = new System.Windows.Forms.TextBox();
             this.zipCodeLabel = new System.Windows.Forms.Label();
             this.zipCodeTextBox = new System.Windows.Forms.TextBox();
-            this.birthDateLabel = new System.Windows.Forms.Label();
-            this.birthDateTextbox = new System.Windows.Forms.TextBox();
             this.nameLabel = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.idLabel = new System.Windows.Forms.Label();
@@ -55,12 +53,7 @@
             this.empRadioButton = new System.Windows.Forms.RadioButton();
             this.adminRadioButton = new System.Windows.Forms.RadioButton();
             this.showPasswordBtn = new System.Windows.Forms.Button();
-            this.dateInstructionsLabel = new System.Windows.Forms.Label();
-            this.LngLabel = new System.Windows.Forms.Label();
-            this.LngTextBox = new System.Windows.Forms.TextBox();
-            this.LatLabel = new System.Windows.Forms.Label();
-            this.LatTextBox = new System.Windows.Forms.TextBox();
-            this.instructionsLabel = new System.Windows.Forms.Label();
+            this.birthdayPicker = new System.Windows.Forms.DateTimePicker();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,7 +61,7 @@
             // 
             this.grandLabel1.AutoSize = true;
             this.grandLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.grandLabel1.Location = new System.Drawing.Point(16, 38);
+            this.grandLabel1.Location = new System.Drawing.Point(469, 38);
             this.grandLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.grandLabel1.Name = "grandLabel1";
             this.grandLabel1.Size = new System.Drawing.Size(191, 25);
@@ -79,7 +72,7 @@
             // 
             this.grandLabel2.AutoSize = true;
             this.grandLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.grandLabel2.Location = new System.Drawing.Point(391, 38);
+            this.grandLabel2.Location = new System.Drawing.Point(13, 38);
             this.grandLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.grandLabel2.Name = "grandLabel2";
             this.grandLabel2.Size = new System.Drawing.Size(174, 25);
@@ -88,17 +81,18 @@
             // 
             // streetTextBox
             // 
-            this.streetTextBox.Location = new System.Drawing.Point(87, 128);
+            this.streetTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.streetTextBox.Location = new System.Drawing.Point(528, 192);
             this.streetTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.streetTextBox.Name = "streetTextBox";
-            this.streetTextBox.Size = new System.Drawing.Size(132, 22);
+            this.streetTextBox.Size = new System.Drawing.Size(132, 26);
             this.streetTextBox.TabIndex = 2;
             this.streetTextBox.TextChanged += new System.EventHandler(this.streetTextBox_TextChanged);
             // 
             // streetLabel
             // 
             this.streetLabel.AutoSize = true;
-            this.streetLabel.Location = new System.Drawing.Point(65, 105);
+            this.streetLabel.Location = new System.Drawing.Point(506, 169);
             this.streetLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.streetLabel.Name = "streetLabel";
             this.streetLabel.Size = new System.Drawing.Size(46, 17);
@@ -108,7 +102,7 @@
             // houseNumLabel
             // 
             this.houseNumLabel.AutoSize = true;
-            this.houseNumLabel.Location = new System.Drawing.Point(65, 169);
+            this.houseNumLabel.Location = new System.Drawing.Point(506, 226);
             this.houseNumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.houseNumLabel.Name = "houseNumLabel";
             this.houseNumLabel.Size = new System.Drawing.Size(101, 17);
@@ -117,17 +111,18 @@
             // 
             // houseNumTextBox
             // 
-            this.houseNumTextBox.Location = new System.Drawing.Point(87, 192);
+            this.houseNumTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.houseNumTextBox.Location = new System.Drawing.Point(528, 249);
             this.houseNumTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.houseNumTextBox.Name = "houseNumTextBox";
-            this.houseNumTextBox.Size = new System.Drawing.Size(132, 22);
+            this.houseNumTextBox.Size = new System.Drawing.Size(132, 26);
             this.houseNumTextBox.TabIndex = 4;
             this.houseNumTextBox.TextChanged += new System.EventHandler(this.houseNumTextBox_TextChanged);
             // 
             // cityLabel
             // 
             this.cityLabel.AutoSize = true;
-            this.cityLabel.Location = new System.Drawing.Point(65, 229);
+            this.cityLabel.Location = new System.Drawing.Point(506, 108);
             this.cityLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.cityLabel.Name = "cityLabel";
             this.cityLabel.Size = new System.Drawing.Size(31, 17);
@@ -136,17 +131,18 @@
             // 
             // cityTextBox
             // 
-            this.cityTextBox.Location = new System.Drawing.Point(87, 249);
+            this.cityTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cityTextBox.Location = new System.Drawing.Point(528, 129);
             this.cityTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.cityTextBox.Name = "cityTextBox";
-            this.cityTextBox.Size = new System.Drawing.Size(132, 22);
+            this.cityTextBox.Size = new System.Drawing.Size(132, 26);
             this.cityTextBox.TabIndex = 6;
             this.cityTextBox.TextChanged += new System.EventHandler(this.cityTextBox_TextChanged);
             // 
             // zipCodeLabel
             // 
             this.zipCodeLabel.AutoSize = true;
-            this.zipCodeLabel.Location = new System.Drawing.Point(65, 288);
+            this.zipCodeLabel.Location = new System.Drawing.Point(506, 282);
             this.zipCodeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.zipCodeLabel.Name = "zipCodeLabel";
             this.zipCodeLabel.Size = new System.Drawing.Size(63, 17);
@@ -155,36 +151,18 @@
             // 
             // zipCodeTextBox
             // 
-            this.zipCodeTextBox.Location = new System.Drawing.Point(87, 308);
+            this.zipCodeTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.zipCodeTextBox.Location = new System.Drawing.Point(528, 303);
             this.zipCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.zipCodeTextBox.Name = "zipCodeTextBox";
-            this.zipCodeTextBox.Size = new System.Drawing.Size(132, 22);
+            this.zipCodeTextBox.Size = new System.Drawing.Size(132, 26);
             this.zipCodeTextBox.TabIndex = 8;
             this.zipCodeTextBox.TextChanged += new System.EventHandler(this.zipCodeTextBox_TextChanged);
-            // 
-            // birthDateLabel
-            // 
-            this.birthDateLabel.AutoSize = true;
-            this.birthDateLabel.Location = new System.Drawing.Point(423, 229);
-            this.birthDateLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.birthDateLabel.Name = "birthDateLabel";
-            this.birthDateLabel.Size = new System.Drawing.Size(69, 17);
-            this.birthDateLabel.TabIndex = 15;
-            this.birthDateLabel.Text = "Birth date";
-            // 
-            // birthDateTextbox
-            // 
-            this.birthDateTextbox.Location = new System.Drawing.Point(444, 249);
-            this.birthDateTextbox.Margin = new System.Windows.Forms.Padding(4);
-            this.birthDateTextbox.Name = "birthDateTextbox";
-            this.birthDateTextbox.Size = new System.Drawing.Size(132, 22);
-            this.birthDateTextbox.TabIndex = 14;
-            this.birthDateTextbox.TextChanged += new System.EventHandler(this.birthDateTextbox_TextChanged);
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(423, 169);
+            this.nameLabel.Location = new System.Drawing.Point(45, 169);
             this.nameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(45, 17);
@@ -193,17 +171,18 @@
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(444, 192);
+            this.nameTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.nameTextBox.Location = new System.Drawing.Point(66, 192);
             this.nameTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(132, 22);
+            this.nameTextBox.Size = new System.Drawing.Size(132, 26);
             this.nameTextBox.TabIndex = 12;
             this.nameTextBox.TextChanged += new System.EventHandler(this.nameTextBox_TextChanged);
             // 
             // idLabel
             // 
             this.idLabel.AutoSize = true;
-            this.idLabel.Location = new System.Drawing.Point(423, 105);
+            this.idLabel.Location = new System.Drawing.Point(58, 108);
             this.idLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.idLabel.Name = "idLabel";
             this.idLabel.Size = new System.Drawing.Size(21, 17);
@@ -212,17 +191,18 @@
             // 
             // idTextBox
             // 
-            this.idTextBox.Location = new System.Drawing.Point(444, 128);
+            this.idTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.idTextBox.Location = new System.Drawing.Point(68, 129);
             this.idTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.idTextBox.Name = "idTextBox";
-            this.idTextBox.Size = new System.Drawing.Size(132, 22);
+            this.idTextBox.Size = new System.Drawing.Size(132, 26);
             this.idTextBox.TabIndex = 10;
             this.idTextBox.TextChanged += new System.EventHandler(this.idTextBox_TextChanged);
             // 
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(423, 345);
+            this.usernameLabel.Location = new System.Drawing.Point(45, 345);
             this.usernameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.usernameLabel.Name = "usernameLabel";
             this.usernameLabel.Size = new System.Drawing.Size(73, 17);
@@ -231,17 +211,18 @@
             // 
             // usernameTextbox
             // 
-            this.usernameTextbox.Location = new System.Drawing.Point(444, 364);
+            this.usernameTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.usernameTextbox.Location = new System.Drawing.Point(66, 364);
             this.usernameTextbox.Margin = new System.Windows.Forms.Padding(4);
             this.usernameTextbox.Name = "usernameTextbox";
-            this.usernameTextbox.Size = new System.Drawing.Size(132, 22);
+            this.usernameTextbox.Size = new System.Drawing.Size(132, 26);
             this.usernameTextbox.TabIndex = 19;
             this.usernameTextbox.TextChanged += new System.EventHandler(this.usernameTextbox_TextChanged);
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(423, 401);
+            this.passwordLabel.Location = new System.Drawing.Point(45, 401);
             this.passwordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.passwordLabel.Name = "passwordLabel";
             this.passwordLabel.Size = new System.Drawing.Size(69, 17);
@@ -250,26 +231,28 @@
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(444, 421);
+            this.passwordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.passwordTextBox.Location = new System.Drawing.Point(66, 421);
             this.passwordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(132, 22);
+            this.passwordTextBox.Size = new System.Drawing.Size(132, 26);
             this.passwordTextBox.TabIndex = 21;
             this.passwordTextBox.TextChanged += new System.EventHandler(this.passwordTextBox_TextChanged);
             // 
             // secPasswordTextBox
             // 
-            this.secPasswordTextBox.Location = new System.Drawing.Point(444, 453);
+            this.secPasswordTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.secPasswordTextBox.Location = new System.Drawing.Point(66, 453);
             this.secPasswordTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.secPasswordTextBox.Name = "secPasswordTextBox";
-            this.secPasswordTextBox.Size = new System.Drawing.Size(132, 22);
+            this.secPasswordTextBox.Size = new System.Drawing.Size(132, 26);
             this.secPasswordTextBox.TabIndex = 23;
             this.secPasswordTextBox.TextChanged += new System.EventHandler(this.secPasswordTextBox_TextChanged);
             // 
             // phoneNumLabel
             // 
             this.phoneNumLabel.AutoSize = true;
-            this.phoneNumLabel.Location = new System.Drawing.Point(600, 105);
+            this.phoneNumLabel.Location = new System.Drawing.Point(222, 105);
             this.phoneNumLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.phoneNumLabel.Name = "phoneNumLabel";
             this.phoneNumLabel.Size = new System.Drawing.Size(101, 17);
@@ -278,10 +261,11 @@
             // 
             // phoneNumberTextBox
             // 
-            this.phoneNumberTextBox.Location = new System.Drawing.Point(621, 128);
+            this.phoneNumberTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(243, 128);
             this.phoneNumberTextBox.Margin = new System.Windows.Forms.Padding(4);
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.Size = new System.Drawing.Size(132, 22);
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(132, 26);
             this.phoneNumberTextBox.TabIndex = 24;
             this.phoneNumberTextBox.TextChanged += new System.EventHandler(this.phoneNumberTextBox_TextChanged);
             // 
@@ -292,14 +276,14 @@
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(189, 86);
             this.submitButton.TabIndex = 26;
-            this.submitButton.Text = "Submit";
+            this.submitButton.Text = "Create";
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
             // genderLabel
             // 
             this.genderLabel.AutoSize = true;
-            this.genderLabel.Location = new System.Drawing.Point(600, 169);
+            this.genderLabel.Location = new System.Drawing.Point(222, 169);
             this.genderLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.genderLabel.Name = "genderLabel";
             this.genderLabel.Size = new System.Drawing.Size(56, 17);
@@ -309,7 +293,7 @@
             // femaleRadioButton
             // 
             this.femaleRadioButton.AutoSize = true;
-            this.femaleRadioButton.Location = new System.Drawing.Point(693, 196);
+            this.femaleRadioButton.Location = new System.Drawing.Point(315, 196);
             this.femaleRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.femaleRadioButton.Name = "femaleRadioButton";
             this.femaleRadioButton.Size = new System.Drawing.Size(75, 21);
@@ -322,7 +306,7 @@
             // maleRadioButton
             // 
             this.maleRadioButton.AutoSize = true;
-            this.maleRadioButton.Location = new System.Drawing.Point(621, 196);
+            this.maleRadioButton.Location = new System.Drawing.Point(243, 196);
             this.maleRadioButton.Margin = new System.Windows.Forms.Padding(4);
             this.maleRadioButton.Name = "maleRadioButton";
             this.maleRadioButton.Size = new System.Drawing.Size(59, 21);
@@ -337,7 +321,7 @@
             this.panel1.Controls.Add(this.roleLabel);
             this.panel1.Controls.Add(this.empRadioButton);
             this.panel1.Controls.Add(this.adminRadioButton);
-            this.panel1.Location = new System.Drawing.Point(389, 281);
+            this.panel1.Location = new System.Drawing.Point(11, 281);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(267, 60);
@@ -385,83 +369,31 @@
             this.showPasswordBtn.BackgroundImage = global::FinalProject_2019.Properties.Resources.hide;
             this.showPasswordBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.showPasswordBtn.FlatAppearance.BorderSize = 0;
-            this.showPasswordBtn.Location = new System.Drawing.Point(580, 448);
+            this.showPasswordBtn.Location = new System.Drawing.Point(212, 430);
             this.showPasswordBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.showPasswordBtn.Name = "showPasswordBtn";
             this.showPasswordBtn.Size = new System.Drawing.Size(44, 32);
             this.showPasswordBtn.TabIndex = 27;
             this.showPasswordBtn.UseVisualStyleBackColor = false;
-            this.showPasswordBtn.Visible = false;
             this.showPasswordBtn.Click += new System.EventHandler(this.showPasswordBtn_Click);
             // 
-            // dateInstructionsLabel
+            // birthdayPicker
             // 
-            this.dateInstructionsLabel.AutoSize = true;
-            this.dateInstructionsLabel.Location = new System.Drawing.Point(585, 252);
-            this.dateInstructionsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.dateInstructionsLabel.Name = "dateInstructionsLabel";
-            this.dateInstructionsLabel.Size = new System.Drawing.Size(92, 17);
-            this.dateInstructionsLabel.TabIndex = 32;
-            this.dateInstructionsLabel.Text = "(dd/mm/yyyy)";
-            // 
-            // LngLabel
-            // 
-            this.LngLabel.AutoSize = true;
-            this.LngLabel.Location = new System.Drawing.Point(65, 402);
-            this.LngLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LngLabel.Name = "LngLabel";
-            this.LngLabel.Size = new System.Drawing.Size(142, 17);
-            this.LngLabel.TabIndex = 36;
-            this.LngLabel.Text = "Longitude coordinate";
-            // 
-            // LngTextBox
-            // 
-            this.LngTextBox.Location = new System.Drawing.Point(87, 423);
-            this.LngTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.LngTextBox.Name = "LngTextBox";
-            this.LngTextBox.Size = new System.Drawing.Size(132, 22);
-            this.LngTextBox.TabIndex = 35;
-            this.LngTextBox.TextChanged += new System.EventHandler(this.LngTextBox_TextChanged);
-            // 
-            // LatLabel
-            // 
-            this.LatLabel.AutoSize = true;
-            this.LatLabel.Location = new System.Drawing.Point(65, 345);
-            this.LatLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LatLabel.Name = "LatLabel";
-            this.LatLabel.Size = new System.Drawing.Size(130, 17);
-            this.LatLabel.TabIndex = 34;
-            this.LatLabel.Text = "Latitude coordinate";
-            // 
-            // LatTextBox
-            // 
-            this.LatTextBox.Location = new System.Drawing.Point(87, 366);
-            this.LatTextBox.Margin = new System.Windows.Forms.Padding(4);
-            this.LatTextBox.Name = "LatTextBox";
-            this.LatTextBox.Size = new System.Drawing.Size(132, 22);
-            this.LatTextBox.TabIndex = 33;
-            this.LatTextBox.TextChanged += new System.EventHandler(this.LatTextBox_TextChanged);
-            // 
-            // instructionsLabel
-            // 
-            this.instructionsLabel.AutoSize = true;
-            this.instructionsLabel.Location = new System.Drawing.Point(226, 385);
-            this.instructionsLabel.Name = "instructionsLabel";
-            this.instructionsLabel.Size = new System.Drawing.Size(171, 34);
-            this.instructionsLabel.TabIndex = 37;
-            this.instructionsLabel.Text = "Must be number with 8\r\nfigures after decimal point";
+            this.birthdayPicker.CustomFormat = "dd/MM/yyyy";
+            this.birthdayPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.birthdayPicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.birthdayPicker.Location = new System.Drawing.Point(68, 243);
+            this.birthdayPicker.Name = "birthdayPicker";
+            this.birthdayPicker.Size = new System.Drawing.Size(131, 26);
+            this.birthdayPicker.TabIndex = 34;
+            this.birthdayPicker.ValueChanged += new System.EventHandler(this.birthdayPicker_ValueChanged);
             // 
             // AddNewEmployee
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Controls.Add(this.instructionsLabel);
-            this.Controls.Add(this.LngLabel);
-            this.Controls.Add(this.LngTextBox);
-            this.Controls.Add(this.LatLabel);
-            this.Controls.Add(this.LatTextBox);
-            this.Controls.Add(this.dateInstructionsLabel);
+            this.Controls.Add(this.birthdayPicker);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.genderLabel);
             this.Controls.Add(this.femaleRadioButton);
@@ -475,8 +407,6 @@
             this.Controls.Add(this.passwordTextBox);
             this.Controls.Add(this.usernameLabel);
             this.Controls.Add(this.usernameTextbox);
-            this.Controls.Add(this.birthDateLabel);
-            this.Controls.Add(this.birthDateTextbox);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.nameTextBox);
             this.Controls.Add(this.idLabel);
@@ -514,8 +444,6 @@
         private System.Windows.Forms.TextBox cityTextBox;
         private System.Windows.Forms.Label zipCodeLabel;
         private System.Windows.Forms.TextBox zipCodeTextBox;
-        private System.Windows.Forms.Label birthDateLabel;
-        private System.Windows.Forms.TextBox birthDateTextbox;
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.Label idLabel;
@@ -536,11 +464,6 @@
         private System.Windows.Forms.Label roleLabel;
         private System.Windows.Forms.RadioButton empRadioButton;
         private System.Windows.Forms.RadioButton adminRadioButton;
-        private System.Windows.Forms.Label dateInstructionsLabel;
-        private System.Windows.Forms.Label LngLabel;
-        private System.Windows.Forms.TextBox LngTextBox;
-        private System.Windows.Forms.Label LatLabel;
-        private System.Windows.Forms.TextBox LatTextBox;
-        private System.Windows.Forms.Label instructionsLabel;
+        private System.Windows.Forms.DateTimePicker birthdayPicker;
     }
 }

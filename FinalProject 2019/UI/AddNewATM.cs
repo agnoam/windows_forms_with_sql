@@ -7,7 +7,7 @@ namespace FinalProject_2019.UI {
 
         private TabContent parent;
         private DatabaseConnector db = new DatabaseConnector();
-        private AtmSize atmSize = AtmSize.NONE;
+        private int atmSize = (int) AtmSize.NONE;
 
         private string baseAddressId;
         private string atmId;
@@ -32,10 +32,10 @@ namespace FinalProject_2019.UI {
             parent = parent_c;
         }
 
-        public AddNewATM(string id_c, AtmSize size_c, int capacity_c, string brand_c, string baseAddressId_c, TabContent parent_c, string atmId_c) {
+        public AddNewATM(string id_c, int size_c, int capacity_c, string brand_c, string baseAddressId_c, TabContent parent_c, string atmId_c) {
             InitializeComponent();
 
-            Address address_c = db.getAddressByID(baseAddressId);
+            Address address_c = db.getAddressByID(baseAddressId_c);
 
             parent = parent_c;
             baseAddressId = baseAddressId_c;
@@ -85,17 +85,13 @@ namespace FinalProject_2019.UI {
                 atmCapacity.Text = capacity.ToString();
 
                 wideATM_Radio.Location = new System.Drawing.Point(239, 215);
-                if (atmSize == AtmSize.BIG) {
+                if (atmSize == (int) AtmSize.BIG) {
                     wideATM_Radio.Checked = true;
-                } else {
-                    wideATM_Radio.Checked = false;
                 }
 
                 singleATM_Radio.Location = new System.Drawing.Point(351, 215);
-                if (atmSize == AtmSize.SMALL) {
+                if (atmSize == (int) AtmSize.SMALL) {
                     singleATM_Radio.Checked = true;
-                } else {
-                    singleATM_Radio.Checked = false;
                 }
 
                 // Updating the address details
@@ -111,13 +107,8 @@ namespace FinalProject_2019.UI {
         }
 
         private void wideATM_CheckedChanged(object sender, EventArgs e) {
-            atmSize = AtmSize.BIG;
-
-            if(singleATM_Radio.Checked) {
-                singleATM_Radio.Checked = false;
-            }
-
-            wideATM_Radio.Checked = true;
+            atmSize = (int) AtmSize.BIG;
+            wideATM_Radio.Checked = !singleATM_Radio.Checked;
 
             if (!isChanged) {
                 isChanged = true;
@@ -125,13 +116,8 @@ namespace FinalProject_2019.UI {
         }
 
         private void singleATM_CheckedChanged(object sender, EventArgs e) {
-            atmSize = AtmSize.SMALL;
-
-            if(wideATM_Radio.Checked) {
-                wideATM_Radio.Checked = false;
-            }
-
-            singleATM_Radio.Checked = true;
+            atmSize = (int) AtmSize.SMALL;
+            singleATM_Radio.Checked = !wideATM_Radio.Checked;
 
             if (!isChanged) {
                 isChanged = true;
@@ -206,13 +192,15 @@ namespace FinalProject_2019.UI {
 
         private void addNewATMButton_Click(object sender, EventArgs e) {
             if (
-                atmSize != AtmSize.NONE &&
+                atmSize != (int) AtmSize.NONE &&
                 capacity > 0 &&
                 !AdditionalFunctions.isEmpty(brand) &&
                 !AdditionalFunctions.isEmpty(street) &&
                 !AdditionalFunctions.isEmpty(houseNumber) &&
                 !AdditionalFunctions.isEmpty(zipCode) &&
                 !AdditionalFunctions.isEmpty(city) &&
+                !AdditionalFunctions.isEmpty(lat) &&
+                !AdditionalFunctions.isEmpty(lng) &&
                 isChanged
             ) {
                 // Add new changes into the database
@@ -231,15 +219,19 @@ namespace FinalProject_2019.UI {
                             new ATM(
                                 addr,
                                 capacity,
-                                (int)atmSize,
+                                (int) atmSize,
                                 brand
                             ),
                             db.getAddressByID(baseAddressId),
                             atmId,
                             baseAddressId
                         );
+
+                        MessageBox.Show($"ATM number {atmId} updated successfuly");
+                        Close();
                     } catch (Exception ex) {
-                        MessageBox.Show("Error occord with Car's update, Please try again later.");
+                        Console.WriteLine(ex);
+                        MessageBox.Show("Error occord with ATM's update, Please try again later.");
                         Close();
                     }
                 } else {
@@ -247,7 +239,7 @@ namespace FinalProject_2019.UI {
                         new ATM(
                             addr,
                             capacity,
-                            (int)atmSize,
+                            (int) atmSize,
                             AdditionalFunctions.trimFlWhitespaces(brand)
                         )
                     );
@@ -266,5 +258,5 @@ namespace FinalProject_2019.UI {
 public enum AtmSize {
     BIG = 2,
     SMALL = 1,
-    NONE
+    NONE = 0
 }

@@ -37,8 +37,6 @@ namespace FinalProject_2019.UI {
         private string house_num;
         private string city;
         private string zip_code;
-        private string lat;
-        private string lng;
 
         public AddNewEmployee(TabContent parent_c) {
             InitializeComponent();
@@ -68,7 +66,8 @@ namespace FinalProject_2019.UI {
 
                 idTextBox.Text = employee.id;
                 nameTextBox.Text = employee.name;
-                birthDateTextbox.Text = employee.birthDate.ToString();
+                birthdayPicker.Value = new DateTime(employee.birthDate.year, employee.birthDate.month, employee.birthDate.day);
+                // birthDateTextbox.Text = employee.birthDate.ToString();
 
                 if (employee.role == ConstVars.Roles.ADMIN) {
                     adminRadioButton.Checked = true;
@@ -78,7 +77,7 @@ namespace FinalProject_2019.UI {
 
                 usernameTextbox.Text = employee.username;
                 phoneNumberTextBox.Text = employee.phone_number;
-                birthDateTextbox.Text = $"{ employee.birthDate.day }/{ employee.birthDate.month }/{ employee.birthDate.year }";
+                // birthDateTextbox.Text = $"{ employee.birthDate.day }/{ employee.birthDate.month }/{ employee.birthDate.year }";
 
                 if (employee.gender == ConstVars.Gender.MALE) {
                     maleRadioButton.Checked = true;
@@ -91,8 +90,6 @@ namespace FinalProject_2019.UI {
                 houseNumTextBox.Text = address.house_num.ToString();
                 cityTextBox.Text = address.city;
                 zipCodeTextBox.Text = address.zip_code;
-                LatTextBox.Text = address.lat.ToString();
-                LngTextBox.Text = address.lng.ToString();
 
                 isChanged = false;
             }
@@ -147,7 +144,7 @@ namespace FinalProject_2019.UI {
         }
 
         private void birthDateTextbox_TextChanged(object sender, EventArgs e) {
-            birth_date = birthDateTextbox.Text;
+            // birth_date = birthDateTextbox.Text;
 
             if (!isChanged) {
                 isChanged = true;
@@ -198,9 +195,15 @@ namespace FinalProject_2019.UI {
             if(showPass) {
                 showPass = false;
                 showPasswordBtn.BackgroundImage = Properties.Resources.view;
+
+                passwordTextBox.UseSystemPasswordChar = PasswordPropertyTextAttribute.No.Password;
+                secPasswordTextBox.UseSystemPasswordChar = PasswordPropertyTextAttribute.No.Password;
             } else {
                 showPass = true;
                 showPasswordBtn.BackgroundImage = Properties.Resources.hide;
+
+                passwordTextBox.UseSystemPasswordChar = PasswordPropertyTextAttribute.Yes.Password;
+                secPasswordTextBox.UseSystemPasswordChar = PasswordPropertyTextAttribute.Yes.Password;
             }
         }
 
@@ -230,18 +233,10 @@ namespace FinalProject_2019.UI {
             }
         }
 
-        private void LatTextBox_TextChanged(object sender, EventArgs e) {
-            lat = LatTextBox.Text;
+        private void birthdayPicker_ValueChanged(object sender, EventArgs e) {
+            birth_date = $"{birthdayPicker.Value.Day}/{birthdayPicker.Value.Month}/{birthdayPicker.Value.Year}";
 
-            if (!isChanged) {
-                isChanged = true;
-            }
-        }
-
-        private void LngTextBox_TextChanged(object sender, EventArgs e) {
-            lng = LngTextBox.Text;
-
-            if (!isChanged) {
+            if(!isChanged) {
                 isChanged = true;
             }
         }
@@ -261,8 +256,6 @@ namespace FinalProject_2019.UI {
                 !AdditionalFunctions.isEmpty(house_num) &&
                 !AdditionalFunctions.isEmpty(city) &&
                 !AdditionalFunctions.isEmpty(zip_code) &&
-                !AdditionalFunctions.isEmpty(lat) &&
-                !AdditionalFunctions.isEmpty(lng) &&
                 isChanged
             ) {
                 if (password == secPassword) {
@@ -282,8 +275,8 @@ namespace FinalProject_2019.UI {
                                         int.Parse(house_num),
                                         city,
                                         zip_code,
-                                        AdditionalFunctions.isEmpty(AdditionalFunctions.trimFlWhitespaces(lat)) ? 0.0 : double.Parse(lat),
-                                        AdditionalFunctions.isEmpty(AdditionalFunctions.trimFlWhitespaces(lng)) ? 0.0 : double.Parse(lng)
+                                        0.0,
+                                        0.0
                                     )
                                 ),
                                 address,
@@ -321,6 +314,10 @@ namespace FinalProject_2019.UI {
                     MessageBox.Show("No data has changed, If you want to close please click the X button on the top");
                 } else {
                     MessageBox.Show("One of the fields are not filled, Please fill and try again.");
+                }
+
+                if(AdditionalFunctions.isEmpty(id)) {
+                    idTextBox.BackColor = Color.Red;
                 }
             }
         }

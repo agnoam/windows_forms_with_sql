@@ -1,6 +1,8 @@
-﻿using FinalProject_2019.Resources;
+﻿using FinalProject_2019.Pages;
+using FinalProject_2019.Resources;
 using FinalProject_2019.UI;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows.Forms;
 
@@ -29,11 +31,20 @@ namespace FinalProject_2019.UI {
             contentWidth = tabCtrl.TabPages[tabIndex].Size.Width;
 
             InitializeComponent();
-            fillDataGrid();
-            
-            if(tabChooser == TabChooser.Tracks) {
+        }
+
+        private void TabContent_Load(object sender, EventArgs e) {
+            if (tabChooser == TabChooser.Tracks) {
                 hideButtons();
+                filledATMsLabel.Hide();
+            } else if (tabChooser == TabChooser.ATM) {
+                showTrackButton.Text = "Fill";
+            } else {
+                showTrackButton.Hide();
+                filledATMsLabel.Hide();
             }
+
+            fillDataGrid();
         }
 
         private void hideButtons() {
@@ -44,10 +55,15 @@ namespace FinalProject_2019.UI {
 
         private void fillDataGrid() {
             DataSet ds = new DataSet();
+            string atmsData = "Filled ATMs: 28,  EmptyATMs: 12, Total ATMs: 125 \r\nCurrent money: 120 / 150";
 
             if (tabChooser == TabChooser.ATM) {
                 // Getting all the data from database
                 ds = database.getAllTable("Atms");
+                Dictionary<string, string> data = database.getATMsData();
+                atmsData = $"Filled ATMs: {int.Parse(data["allATMs"]) - int.Parse(data["emptyATMs"])},  EmptyATMs: {data["emptyATMs"]}, Total ATMs: {data["allATMs"]} \r\nCurrent money: {String.Format("{0:n0}", int.Parse(data["cuurentMoney"]))} of {String.Format("{0:n0}", int.Parse(data["filledMoney"]))}";
+
+                filledATMsLabel.Text = atmsData;
             } else if (tabChooser == TabChooser.Cars) {
                 // Getting all the data from database
                 ds = database.getAllTable("Cars");
@@ -79,7 +95,7 @@ namespace FinalProject_2019.UI {
         private void updateButton_Click(object sender, EventArgs e) {
             if(tabChooser == TabChooser.ATM) {
                 AddNewATM addAtmsPage =
-                    new AddNewATM(itemId, AtmSize.SMALL, selectedAtm.capacity, selectedAtm.brand, addrsId, this, itemId);
+                    new AddNewATM(itemId, selectedAtm.size, selectedAtm.capacity, selectedAtm.brand, addrsId, this, itemId);
                 addAtmsPage.ShowDialog();
             } else if (tabChooser == TabChooser.Cars) {
                 AddNewCar addNewCarPage = new AddNewCar(selectedCar, itemId, this);
@@ -162,6 +178,9 @@ namespace FinalProject_2019.UI {
                     itemId = id;
                     addrsId = addressId;
                     selectedEmployee = new Employee(id, name, new SqlDate(birthDay), role, username, phoneNum, gender, null);
+                } else if(tabChooser == TabChooser.Tracks) {
+                    string id = Convert.ToString(selectedRow.Cells["id"].Value);
+                    itemId = id;
                 }
             }
         }
@@ -169,6 +188,20 @@ namespace FinalProject_2019.UI {
         public void refreshTable(TabChooser chooser) {
             tabChooser = chooser;
             fillDataGrid();
+        }
+
+        private void showTrackButton_Click(object sender, EventArgs e) {
+            if(tabChooser == TabChooser.Tracks) {
+                if(database.getTrackByID(itemId).atms.Length > 1) {
+                    MapPage map = new MapPage(itemId);
+                    map.ShowDialog();
+                } else {
+                    MessageBox.Show("There is no route, Beacuse there is just 1 point in the track.");
+                }
+            } else if(tabChooser == TabChooser.ATM) {
+                new DatabaseConnector().fillATM(itemId);
+                refreshTable(TabChooser.ATM);
+            }
         }
     }
 }

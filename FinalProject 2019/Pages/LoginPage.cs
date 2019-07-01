@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FinalProject_2019.Pages;
+using FinalProject_2019.Resources;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -95,14 +97,21 @@ namespace FinalProject_2019 {
 
         private void signInBtn_Click(object sender, EventArgs e) {
             // Check with the Database the username and the password and move to the HomePage || AdminPage
-
-
-            // WinForms navigation needs to be like this
-            AdminPage adminPage = new AdminPage();
-            adminPage.TopLevel = false;
-            Controls.Clear();
-            Controls.Add(adminPage);
-            adminPage.Show();
+            Employee resEmp = new DatabaseConnector().logInEmp(usernameText, AdditionalFunctions.MD5(AdditionalFunctions.MD5(passwordText)));
+            if (resEmp != null) {
+                if (resEmp.role == ConstVars.Roles.ADMIN) {
+                    // WinForms navigation needs to be like this
+                    AdminPage adminPage = new AdminPage(resEmp);
+                    adminPage.TopLevel = false;
+                    Controls.Clear();
+                    Controls.Add(adminPage);
+                    adminPage.Show();
+                } else {
+                    MapPage mPage = new MapPage(resEmp);
+                    mPage.Show();
+                    Hide();
+                }
+            }
         }
     }
 }

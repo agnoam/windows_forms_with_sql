@@ -31,7 +31,6 @@ namespace FinalProject_2019.Pages {
             this.FrameLabel = new System.Windows.Forms.Label();
             this.closeForm = new System.Windows.Forms.Button();
             this.map = new GMap.NET.WindowsForms.GMapControl();
-            this.addMark = new System.Windows.Forms.Button();
             this.formBorder.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,28 +109,18 @@ namespace FinalProject_2019.Pages {
             this.map.TabIndex = 1;
             this.map.Zoom = 0D;
             // 
-            // addMark
-            // 
-            this.addMark.Location = new System.Drawing.Point(1008, 706);
-            this.addMark.Name = "addMark";
-            this.addMark.Size = new System.Drawing.Size(75, 23);
-            this.addMark.TabIndex = 2;
-            this.addMark.Text = "Add Marker";
-            this.addMark.UseVisualStyleBackColor = true;
-            this.addMark.Click += new System.EventHandler(this.addMark_Click);
-            // 
             // MapPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1095, 741);
-            this.Controls.Add(this.addMark);
             this.Controls.Add(this.map);
             this.Controls.Add(this.formBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MapPage";
             this.Text = "NSecurity";
+            this.Load += new System.EventHandler(this.MapPage_Load);
             this.formBorder.ResumeLayout(false);
             this.formBorder.PerformLayout();
             this.ResumeLayout(false);
@@ -145,6 +134,5 @@ namespace FinalProject_2019.Pages {
         private System.Windows.Forms.Button closeForm;
         private System.Windows.Forms.Panel panel1;
         private GMap.NET.WindowsForms.GMapControl map;
-        private System.Windows.Forms.Button addMark;
     }
 }

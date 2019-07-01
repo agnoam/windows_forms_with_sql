@@ -280,9 +280,9 @@
             this.instructionsLabel.AutoSize = true;
             this.instructionsLabel.Location = new System.Drawing.Point(197, 344);
             this.instructionsLabel.Name = "instructionsLabel";
-            this.instructionsLabel.Size = new System.Drawing.Size(171, 34);
+            this.instructionsLabel.Size = new System.Drawing.Size(200, 34);
             this.instructionsLabel.TabIndex = 23;
-            this.instructionsLabel.Text = "Must be number with 8\r\nfigures after decimal point";
+            this.instructionsLabel.Text = "Must be at least number with 6\r\nfigures after decimal point";
             // 
             // AddNewATM
             // 

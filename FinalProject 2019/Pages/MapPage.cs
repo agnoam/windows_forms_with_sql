@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FinalProject_2019.Resources;
 using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
@@ -17,15 +18,42 @@ namespace FinalProject_2019.Pages {
         
         private bool mouseDown;
         private Point lastLocation;
+        private DatabaseConnector db = new DatabaseConnector();
+        private Employee signedEmp = null;
+        private Track[] allTracks;
+        private Track trackToShow;
 
-        public MapPage(AdminPage adminPage) {
+        public MapPage() {
+            InitializeComponent();
+        }
+
+        public MapPage(Employee signedEmp_c) {
             InitializeComponent();
 
+            signedEmp = signedEmp_c;
+            allTracks = db.getAllTracksForEmp(signedEmp.id);
+        }
+
+        public MapPage(string trackID) {
+            InitializeComponent();
+
+            trackToShow = db.getTrackByID(trackID);
+        }
+
+        private void MapPage_Load(object sender, EventArgs e) {
             loadGoogleMaps();
+
+            if(trackToShow != null) {
+                drawRoute(trackToShow);
+            }
         }
 
         private void closeForm_Click(object sender, EventArgs e) {
-            Application.Exit();
+            if (signedEmp != null) {
+                Application.Exit();
+            } else {
+                Close();
+            }
         }
 
         private void formBorder_MouseDown(object sender, MouseEventArgs e) {
@@ -35,8 +63,8 @@ namespace FinalProject_2019.Pages {
 
         private void formBorder_MouseMove(object sender, MouseEventArgs e) {
             if (mouseDown) {
-                this.Location = new Point(
-                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+                Location = new Point(
+                    (Location.X - lastLocation.X) + e.X, (Location.Y - lastLocation.Y) + e.Y);
 
                 Update();
             }
@@ -49,10 +77,11 @@ namespace FinalProject_2019.Pages {
         private void loadGoogleMaps() {
             map.DragButton = MouseButtons.Left;
             map.MapProvider = GMapProviders.OpenStreetMap;
-            map.MinZoom = 5;
-            map.MaxZoom = 100;
+            map.MinZoom = 2;
+            map.MaxZoom = 75;
             map.Zoom = 10;
             map.MarkersEnabled = true;
+            map.ShowCenter = false;
 
             double lat = 0.0;
             double lng = 0.0;
@@ -60,19 +89,43 @@ namespace FinalProject_2019.Pages {
             map.Position = new PointLatLng(lat, lng);
         }
 
-        private void addMarker(GMapMarker marker) {
+        private void addMarker(GMapMarker marker, string toolTip) {
             GMapOverlay markersOverlay = new GMapOverlay("markersLayer");
-            markersOverlay.Markers.Add(marker);
 
-            // Adding markers overlay to the map
-            map.Overlays.Add(markersOverlay);
+            if(!AdditionalFunctions.isEmpty(toolTip)) {
+                marker.ToolTipMode = MarkerTooltipMode.OnMouseOver;
+                marker.ToolTipText = toolTip;
+            }
+
+            markersOverlay.Markers.Add(marker);
+            map.Overlays.Add(markersOverlay); // Adding markers overlay to the map
         }
 
-        private void addMark_Click(object sender, EventArgs e) {
-            PointLatLng latLng = new PointLatLng(0.0, 0.0);
+        private void drawRoute(Track track) {
+            GMapOverlay polyOverlay = new GMapOverlay("routeOverlay");
+            List<PointLatLng> points = new List<PointLatLng>();
+            List<LatLng> pointsToCalc = new List<LatLng>();
 
-            addMarker(new GMarkerCross(latLng));
-            addMarker(new GMarkerGoogle(latLng, GMarkerGoogleType.orange));
+            Console.WriteLine("atmLength: " + track.atms.Length);
+            for (int i = 0; i < track.atms.Length; i++) {
+                Address atmAddr = track.atms[i].address;
+                pointsToCalc.Add(new LatLng(atmAddr.lat, atmAddr.lng));
+            }
+
+            List<LatLng> sortedPoints = new DatabaseConnector().calcShortestTrack(pointsToCalc);
+            for(int i = 0; i < sortedPoints.Count; i++) {
+                addMarker(new GMarkerGoogle(sortedPoints[i].toPointLatLng(), GMarkerGoogleType.green), (i+1).ToString());
+                points.Add(sortedPoints[i].toPointLatLng());
+            }
+            
+            GMapPolygon polygon = new GMapPolygon(points, "routePolygon");
+            polygon.Fill = new SolidBrush(Color.FromArgb(0, Color.Red));
+
+            polygon.Stroke = new Pen(Color.Red, 5);
+            polyOverlay.Polygons.Add(polygon);
+
+            map.Overlays.Add(polyOverlay);
+            map.ZoomAndCenterMarkers("markersLayer");
         }
     }
 }

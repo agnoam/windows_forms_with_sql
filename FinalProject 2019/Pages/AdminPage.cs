@@ -1,7 +1,9 @@
-﻿using FinalProject_2019.UI;
+﻿using FinalProject_2019.Resources;
+using FinalProject_2019.UI;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace FinalProject_2019 {
@@ -9,9 +11,19 @@ namespace FinalProject_2019 {
 
         private bool mouseDown = false;
         private Point lastLocation;
+        private Employee loginedEmp;
 
         public AdminPage() {
             InitializeComponent();
+
+            // Select employees tab
+            employees_Click(null, null);
+        }
+
+        public AdminPage(Employee loginedEmp_c) {
+            InitializeComponent();
+
+            loginedEmp = loginedEmp_c;
 
             // Select employees tab
             employees_Click(null, null);
@@ -152,6 +164,118 @@ namespace FinalProject_2019 {
 
         public TabControl getTabControl() {
             return tabControl;
+        }
+
+        private void WiseAlgBtn_Click(object sender, EventArgs e) {
+            DatabaseConnector db = new DatabaseConnector();
+
+            Dictionary<string, int> atms = db.getAllAtms();
+            Dictionary<string, DictionaryData> allAtmsWithAVG = new Dictionary<string, DictionaryData>(); // { id: '', { avg: [7 cels], liveMoney: int} }
+            bool showWithdrawalsErr = false;
+            string[] ids = atms.Keys.ToArray();
+
+            for (int i = 0; i < ids.Length; i++) {
+                // Set the id of the atm and the money its contains
+                allAtmsWithAVG.Add(ids[i], new DictionaryData(atms[ids[i]]));
+                int[] allDaysAvg = new int[7];
+
+                // Fill the avg of each day
+                for (int j = 1; j <= 7; j++) {
+                    allDaysAvg[j - 1] = db.getAvgWithdrawalsOfDay(ids[i], j);
+                }
+
+                allAtmsWithAVG[ids[i]].avg = allDaysAvg;
+
+
+                // Calculate the date the money will end or will be critical
+                int daysUntilEmpty = 0;
+                int day = (int) DateTime.Now.DayOfWeek;
+
+                if (withdrawalsExists(allAtmsWithAVG[ids[i]].avg)) {
+                    while (allAtmsWithAVG[ids[i]].liveMoneyAvilable >= 0) {
+                        allAtmsWithAVG[ids[i]].liveMoneyAvilable -= allAtmsWithAVG[ids[i]].avg[day];
+
+                        daysUntilEmpty++;
+                        day++;
+                        if (day >= 7) {
+                            day = 1;
+                        }
+                    }
+
+                    // Book into Track at the date needed
+                    DateTime today = DateTime.Now;
+                    DateTime emptyDay = today.AddDays(daysUntilEmpty - 2);
+                    SqlDate emptyDate = new SqlDate(emptyDay.Day, emptyDay.Month, emptyDay.Year);
+
+                    // Check if exists Track at this day
+                    Track[] allTracksAtEmptyDate = db.getTracksByDate(emptyDate);
+                    if (allTracksAtEmptyDate.Length > 0) {
+                        for (int j = 0; j < allTracksAtEmptyDate.Length; j++) {
+                            if (allTracksAtEmptyDate[j].atms.Length < 6 && !allTracksAtEmptyDate[j].is_done) {
+                                // Insert this ATM into this Track
+                                db.addAtmToTrack(int.Parse(ids[i]), int.Parse(db.getIdByTrack(allTracksAtEmptyDate[j]))); // ids[i] -> currentAtmID
+                            }
+                        }
+                    } else {
+                        // Creates new Track with the specified atm inside
+                        int newTrackID = db.addTrack(
+                            new Track(
+                                null,
+                                false,
+                                emptyDate,
+                                db.getRandID(RandChooser.Car),
+                                db.getRandID(RandChooser.Employee),
+                                db.getRandID(RandChooser.Admin)
+                            )
+                        );
+                        db.addAtmToTrack(int.Parse(ids[i]), newTrackID);
+                    }
+                } else {
+                    showWithdrawalsErr = true;
+                }
+            }
+
+            if(showWithdrawalsErr) {
+                MessageBox.Show("There is no withdrawals to work with, Please withdrawal and try again");
+            }
+        }
+
+        private bool withdrawalsExists(int[] avgWithdrawalsArr) {
+            bool isFilled = false;
+
+            for (int i = 0; i < avgWithdrawalsArr.Length; i++) {
+                if (avgWithdrawalsArr[i] != 0) {
+                    isFilled = true;
+                }
+            }
+
+            return isFilled;
+        }
+
+        private class DictionaryData {
+            public int[] avg { get; set; }
+            public int liveMoneyAvilable { get; set; }
+
+            public DictionaryData(int liveMoneyAvilable_c) {
+                avg = new int[7];
+                liveMoneyAvilable = liveMoneyAvilable_c;
+            }
+        }
+
+        private void withdrawalsBtn_Click(object sender, EventArgs e) {
+            DatabaseConnector db = new DatabaseConnector();
+            Dictionary<string, int> allAtms = db.getAllAtms(); // { id, live_money_avilable }
+
+            string[] keys = allAtms.Keys.ToArray();
+
+            for (int i = 0; i < 200; i++) {
+                Random random = new Random();
+                int randID = random.Next(0, keys.Length);
+
+                db.makeWithdrawal(keys[randID], new SqlDate(28, 6, 2019), random.Next(1, 50) * 100);
+            }
+
+            MessageBox.Show("All withdrawals saved successfuly");
         }
     }
 }

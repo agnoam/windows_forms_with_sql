@@ -36,6 +36,7 @@ namespace FinalProject_2019 {
             this.carsPage = new System.Windows.Forms.TabPage();
             this.routesPage = new System.Windows.Forms.TabPage();
             this.buttonsPanel = new System.Windows.Forms.Panel();
+            this.withdrawalsBtn = new System.Windows.Forms.Button();
             this.logoutBtn = new System.Windows.Forms.Button();
             this.WiseAlgBtn = new System.Windows.Forms.Button();
             this.ManageCars = new System.Windows.Forms.Button();
@@ -54,10 +55,10 @@ namespace FinalProject_2019 {
             this.formBorder.Controls.Add(this.panel1);
             this.formBorder.Controls.Add(this.FrameLabel);
             this.formBorder.Controls.Add(this.closeForm);
-            this.formBorder.Location = new System.Drawing.Point(-2, -2);
-            this.formBorder.Margin = new System.Windows.Forms.Padding(2);
+            this.formBorder.Location = new System.Drawing.Point(-3, -2);
+            this.formBorder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.formBorder.Name = "formBorder";
-            this.formBorder.Size = new System.Drawing.Size(826, 40);
+            this.formBorder.Size = new System.Drawing.Size(1101, 49);
             this.formBorder.TabIndex = 0;
             this.formBorder.MouseDown += new System.Windows.Forms.MouseEventHandler(this.formBorder_MouseDown);
             this.formBorder.MouseMove += new System.Windows.Forms.MouseEventHandler(this.formBorder_MouseMove);
@@ -65,10 +66,10 @@ namespace FinalProject_2019 {
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(221, 40);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(295, 49);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(8, 171);
+            this.panel1.Size = new System.Drawing.Size(11, 210);
             this.panel1.TabIndex = 3;
             // 
             // FrameLabel
@@ -76,10 +77,9 @@ namespace FinalProject_2019 {
             this.FrameLabel.AutoSize = true;
             this.FrameLabel.Font = new System.Drawing.Font("Poor Richard", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FrameLabel.ForeColor = System.Drawing.SystemColors.Control;
-            this.FrameLabel.Location = new System.Drawing.Point(10, 9);
-            this.FrameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.FrameLabel.Location = new System.Drawing.Point(13, 11);
             this.FrameLabel.Name = "FrameLabel";
-            this.FrameLabel.Size = new System.Drawing.Size(93, 22);
+            this.FrameLabel.Size = new System.Drawing.Size(115, 28);
             this.FrameLabel.TabIndex = 2;
             this.FrameLabel.Text = "NSecurities";
             // 
@@ -92,10 +92,10 @@ namespace FinalProject_2019 {
             this.closeForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.closeForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.closeForm.ForeColor = System.Drawing.SystemColors.Control;
-            this.closeForm.Location = new System.Drawing.Point(782, 0);
-            this.closeForm.Margin = new System.Windows.Forms.Padding(2);
+            this.closeForm.Location = new System.Drawing.Point(1043, 0);
+            this.closeForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.closeForm.Name = "closeForm";
-            this.closeForm.Size = new System.Drawing.Size(44, 40);
+            this.closeForm.Size = new System.Drawing.Size(59, 49);
             this.closeForm.TabIndex = 1;
             this.closeForm.Text = "X";
             this.closeForm.UseVisualStyleBackColor = false;
@@ -107,53 +107,55 @@ namespace FinalProject_2019 {
             this.tabControl.Controls.Add(this.atmsPage);
             this.tabControl.Controls.Add(this.carsPage);
             this.tabControl.Controls.Add(this.routesPage);
-            this.tabControl.Location = new System.Drawing.Point(208, 10);
-            this.tabControl.Margin = new System.Windows.Forms.Padding(2);
+            this.tabControl.Location = new System.Drawing.Point(277, 12);
+            this.tabControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(617, 602);
+            this.tabControl.Size = new System.Drawing.Size(823, 741);
             this.tabControl.TabIndex = 2;
             // 
             // manageEmployees
             // 
             this.manageEmployees.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.manageEmployees.Location = new System.Drawing.Point(4, 22);
-            this.manageEmployees.Margin = new System.Windows.Forms.Padding(2);
+            this.manageEmployees.Location = new System.Drawing.Point(4, 25);
+            this.manageEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.manageEmployees.Name = "manageEmployees";
-            this.manageEmployees.Padding = new System.Windows.Forms.Padding(2);
-            this.manageEmployees.Size = new System.Drawing.Size(609, 576);
+            this.manageEmployees.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.manageEmployees.Size = new System.Drawing.Size(815, 712);
             this.manageEmployees.TabIndex = 0;
             // 
             // atmsPage
             // 
-            this.atmsPage.Location = new System.Drawing.Point(4, 22);
-            this.atmsPage.Margin = new System.Windows.Forms.Padding(2);
+            this.atmsPage.Location = new System.Drawing.Point(4, 25);
+            this.atmsPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.atmsPage.Name = "atmsPage";
-            this.atmsPage.Padding = new System.Windows.Forms.Padding(2);
-            this.atmsPage.Size = new System.Drawing.Size(609, 576);
+            this.atmsPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.atmsPage.Size = new System.Drawing.Size(815, 712);
             this.atmsPage.TabIndex = 1;
             this.atmsPage.Text = "atmsPage";
             // 
             // carsPage
             // 
-            this.carsPage.Location = new System.Drawing.Point(4, 22);
+            this.carsPage.Location = new System.Drawing.Point(4, 25);
+            this.carsPage.Margin = new System.Windows.Forms.Padding(4);
             this.carsPage.Name = "carsPage";
-            this.carsPage.Size = new System.Drawing.Size(609, 576);
+            this.carsPage.Size = new System.Drawing.Size(815, 712);
             this.carsPage.TabIndex = 2;
             // 
             // routesPage
             // 
-            this.routesPage.Location = new System.Drawing.Point(4, 22);
-            this.routesPage.Margin = new System.Windows.Forms.Padding(2);
+            this.routesPage.Location = new System.Drawing.Point(4, 25);
+            this.routesPage.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.routesPage.Name = "routesPage";
-            this.routesPage.Padding = new System.Windows.Forms.Padding(2);
-            this.routesPage.Size = new System.Drawing.Size(609, 576);
+            this.routesPage.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.routesPage.Size = new System.Drawing.Size(815, 712);
             this.routesPage.TabIndex = 1;
             this.routesPage.Text = "RoutesPage";
             // 
             // buttonsPanel
             // 
             this.buttonsPanel.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonsPanel.Controls.Add(this.withdrawalsBtn);
             this.buttonsPanel.Controls.Add(this.logoutBtn);
             this.buttonsPanel.Controls.Add(this.WiseAlgBtn);
             this.buttonsPanel.Controls.Add(this.ManageCars);
@@ -161,11 +163,26 @@ namespace FinalProject_2019 {
             this.buttonsPanel.Controls.Add(this.ManageATMs);
             this.buttonsPanel.Controls.Add(this.ButtonSelector);
             this.buttonsPanel.Controls.Add(this.employees);
-            this.buttonsPanel.Location = new System.Drawing.Point(-2, 38);
-            this.buttonsPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonsPanel.Location = new System.Drawing.Point(-3, 47);
+            this.buttonsPanel.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonsPanel.Name = "buttonsPanel";
-            this.buttonsPanel.Size = new System.Drawing.Size(229, 564);
+            this.buttonsPanel.Size = new System.Drawing.Size(305, 694);
             this.buttonsPanel.TabIndex = 1;
+            // 
+            // withdrawalsBtn
+            // 
+            this.withdrawalsBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.withdrawalsBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
+            this.withdrawalsBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
+            this.withdrawalsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.withdrawalsBtn.Image = global::FinalProject_2019.Properties.Resources.atm;
+            this.withdrawalsBtn.Location = new System.Drawing.Point(236, 622);
+            this.withdrawalsBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.withdrawalsBtn.Name = "withdrawalsBtn";
+            this.withdrawalsBtn.Size = new System.Drawing.Size(67, 73);
+            this.withdrawalsBtn.TabIndex = 8;
+            this.withdrawalsBtn.UseVisualStyleBackColor = true;
+            this.withdrawalsBtn.Click += new System.EventHandler(this.withdrawalsBtn_Click);
             // 
             // logoutBtn
             // 
@@ -174,29 +191,31 @@ namespace FinalProject_2019 {
             this.logoutBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkBlue;
             this.logoutBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CornflowerBlue;
             this.logoutBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.logoutBtn.Location = new System.Drawing.Point(0, 505);
+            this.logoutBtn.Location = new System.Drawing.Point(0, 622);
+            this.logoutBtn.Margin = new System.Windows.Forms.Padding(4);
             this.logoutBtn.Name = "logoutBtn";
-            this.logoutBtn.Size = new System.Drawing.Size(50, 59);
+            this.logoutBtn.Size = new System.Drawing.Size(67, 73);
             this.logoutBtn.TabIndex = 7;
             this.logoutBtn.UseVisualStyleBackColor = true;
             this.logoutBtn.Click += new System.EventHandler(this.logoutBtn_Click);
             // 
             // WiseAlgBtn
             // 
-            this.WiseAlgBtn.Location = new System.Drawing.Point(0, 283);
-            this.WiseAlgBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.WiseAlgBtn.Location = new System.Drawing.Point(0, 348);
+            this.WiseAlgBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.WiseAlgBtn.Name = "WiseAlgBtn";
-            this.WiseAlgBtn.Size = new System.Drawing.Size(206, 182);
+            this.WiseAlgBtn.Size = new System.Drawing.Size(275, 224);
             this.WiseAlgBtn.TabIndex = 6;
             this.WiseAlgBtn.Text = "Start Computing";
             this.WiseAlgBtn.UseVisualStyleBackColor = true;
+            this.WiseAlgBtn.Click += new System.EventHandler(this.WiseAlgBtn_Click);
             // 
             // ManageCars
             // 
-            this.ManageCars.Location = new System.Drawing.Point(0, 149);
-            this.ManageCars.Margin = new System.Windows.Forms.Padding(2);
+            this.ManageCars.Location = new System.Drawing.Point(0, 183);
+            this.ManageCars.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ManageCars.Name = "ManageCars";
-            this.ManageCars.Size = new System.Drawing.Size(206, 63);
+            this.ManageCars.Size = new System.Drawing.Size(275, 78);
             this.ManageCars.TabIndex = 5;
             this.ManageCars.Text = "Cars";
             this.ManageCars.UseVisualStyleBackColor = true;
@@ -204,10 +223,10 @@ namespace FinalProject_2019 {
             // 
             // ManageRoutes
             // 
-            this.ManageRoutes.Location = new System.Drawing.Point(0, 216);
-            this.ManageRoutes.Margin = new System.Windows.Forms.Padding(2);
+            this.ManageRoutes.Location = new System.Drawing.Point(0, 266);
+            this.ManageRoutes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ManageRoutes.Name = "ManageRoutes";
-            this.ManageRoutes.Size = new System.Drawing.Size(206, 63);
+            this.ManageRoutes.Size = new System.Drawing.Size(275, 78);
             this.ManageRoutes.TabIndex = 4;
             this.ManageRoutes.Text = "Tracks";
             this.ManageRoutes.UseVisualStyleBackColor = true;
@@ -215,10 +234,10 @@ namespace FinalProject_2019 {
             // 
             // ManageATMs
             // 
-            this.ManageATMs.Location = new System.Drawing.Point(0, 77);
-            this.ManageATMs.Margin = new System.Windows.Forms.Padding(2);
+            this.ManageATMs.Location = new System.Drawing.Point(0, 95);
+            this.ManageATMs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ManageATMs.Name = "ManageATMs";
-            this.ManageATMs.Size = new System.Drawing.Size(206, 68);
+            this.ManageATMs.Size = new System.Drawing.Size(275, 84);
             this.ManageATMs.TabIndex = 1;
             this.ManageATMs.Text = "ATMs";
             this.ManageATMs.UseVisualStyleBackColor = true;
@@ -227,18 +246,18 @@ namespace FinalProject_2019 {
             // ButtonSelector
             // 
             this.ButtonSelector.BackColor = System.Drawing.Color.DarkBlue;
-            this.ButtonSelector.Location = new System.Drawing.Point(205, -1);
-            this.ButtonSelector.Margin = new System.Windows.Forms.Padding(2);
+            this.ButtonSelector.Location = new System.Drawing.Point(273, -1);
+            this.ButtonSelector.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ButtonSelector.Name = "ButtonSelector";
-            this.ButtonSelector.Size = new System.Drawing.Size(24, 73);
+            this.ButtonSelector.Size = new System.Drawing.Size(32, 90);
             this.ButtonSelector.TabIndex = 3;
             // 
             // employees
             // 
             this.employees.Location = new System.Drawing.Point(0, -1);
-            this.employees.Margin = new System.Windows.Forms.Padding(2);
+            this.employees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.employees.Name = "employees";
-            this.employees.Size = new System.Drawing.Size(206, 74);
+            this.employees.Size = new System.Drawing.Size(275, 91);
             this.employees.TabIndex = 2;
             this.employees.Text = "Employees";
             this.employees.UseVisualStyleBackColor = true;
@@ -246,15 +265,15 @@ namespace FinalProject_2019 {
             // 
             // AdminPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(821, 602);
+            this.ClientSize = new System.Drawing.Size(1095, 741);
             this.Controls.Add(this.buttonsPanel);
             this.Controls.Add(this.formBorder);
             this.Controls.Add(this.tabControl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "AdminPage";
             this.Text = "NSecurity";
             this.formBorder.ResumeLayout(false);
@@ -284,6 +303,7 @@ namespace FinalProject_2019 {
         private System.Windows.Forms.Button ManageCars;
         private System.Windows.Forms.Button logoutBtn;
         private System.Windows.Forms.Button WiseAlgBtn;
+        private System.Windows.Forms.Button withdrawalsBtn;
     }
 }
 

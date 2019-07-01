@@ -46,8 +46,8 @@ namespace FinalProject_2019.UI {
                 modelTextBox.Text = carToUpdate.model;
                 codeTextBox.Text = carToUpdate.code;
                 createCarBtn.Text = "Update";
-                creationDateTextBox.Text =
-                    $"{carToUpdate.creation_date.day}/{carToUpdate.creation_date.month}/{carToUpdate.creation_date.year}";
+                creationDatePicker.Value = 
+                    new DateTime(carToUpdate.creation_date.year, carToUpdate.creation_date.month, carToUpdate.creation_date.day);
 
                 isChanged = false;
             } else {
@@ -59,11 +59,10 @@ namespace FinalProject_2019.UI {
                 driverIdTextBox.Location = new Point(94, 97);
                 modelTextBox.Location = new Point(95, 162);
                 modelLabel.Location = new Point(91, 143);
-                creationDateTextBox.Location = new Point(95, 230);
+                creationDatePicker.Location = new Point(95, 230);
                 creationDateLabel.Location = new Point(91, 210);
                 codeTextBox.Location = new Point(95, 298);
                 codeLabel.Location = new Point(91, 278);
-                dateInstructionsLabel.Location = new Point(160, 230);
             }
         }
 
@@ -147,8 +146,8 @@ namespace FinalProject_2019.UI {
             }
         }
 
-        private void creationDateTextBox_TextChanged(object sender, EventArgs e) {
-            creationDate = creationDateTextBox.Text;
+        private void creationDatePicker_ValueChanged(object sender, EventArgs e) {
+            creationDate = $"{creationDatePicker.Value.Day}/{creationDatePicker.Value.Month}/{creationDatePicker.Value.Year}";
 
             if (!isChanged) {
                 isChanged = true;
