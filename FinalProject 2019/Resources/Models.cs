@@ -159,24 +159,26 @@ namespace FinalProject_2019.Resources {
             // DD/MM/YYYY
             string[] splittedDate = dateString.Split('/');
 
-            int day_c = int.Parse(splittedDate[0]);
-            int month_c = int.Parse(splittedDate[1]);
-            int year_c = int.Parse(splittedDate[2].Split(' ')[0]);
+            if(splittedDate.Length == 3) {
+                int day_c = int.Parse(splittedDate[0]);
+                int month_c = int.Parse(splittedDate[1]);
+                int year_c = int.Parse(splittedDate[2].Split(' ')[0]);
 
-            if (day_c >= 1 && day <= 31) {
-                if (month_c >= 1 && month <= 12) {
-                    if (year_c > 1920 && year < 2150) {
-                        day = day_c;
-                        month = month_c;
-                        year = year_c;
+                if (day_c >= 1 && day <= 31) {
+                    if (month_c >= 1 && month <= 12) {
+                        if (year_c > 1920 && year < 2150) {
+                            day = day_c;
+                            month = month_c;
+                            year = year_c;
+                        } else {
+                            throw new Exception("Invalid year");
+                        }
                     } else {
-                        throw new Exception("Invalid year");
+                        throw new Exception("Invalid month => have to be between 1 and 12");
                     }
                 } else {
-                    throw new Exception("Invalid month => have to be between 1 and 12");
+                    throw new Exception("Invalid day => have to be between 1 and 31");
                 }
-            } else {
-                throw new Exception("Invalid day => have to be between 1 and 31");
             }
         }
 

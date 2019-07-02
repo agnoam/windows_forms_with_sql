@@ -31,6 +31,9 @@ namespace FinalProject_2019.Pages {
             this.FrameLabel = new System.Windows.Forms.Label();
             this.closeForm = new System.Windows.Forms.Button();
             this.map = new GMap.NET.WindowsForms.GMapControl();
+            this.trackIdLabel = new System.Windows.Forms.Label();
+            this.numOfPointsLabel = new System.Windows.Forms.Label();
+            this.dropdownList = new System.Windows.Forms.ComboBox();
             this.formBorder.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,12 +112,44 @@ namespace FinalProject_2019.Pages {
             this.map.TabIndex = 1;
             this.map.Zoom = 0D;
             // 
+            // trackIdLabel
+            // 
+            this.trackIdLabel.AutoSize = true;
+            this.trackIdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.trackIdLabel.Location = new System.Drawing.Point(14, 72);
+            this.trackIdLabel.Name = "trackIdLabel";
+            this.trackIdLabel.Size = new System.Drawing.Size(83, 20);
+            this.trackIdLabel.TabIndex = 4;
+            this.trackIdLabel.Text = "Track ID: ";
+            // 
+            // numOfPointsLabel
+            // 
+            this.numOfPointsLabel.AutoSize = true;
+            this.numOfPointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.numOfPointsLabel.Location = new System.Drawing.Point(12, 106);
+            this.numOfPointsLabel.Name = "numOfPointsLabel";
+            this.numOfPointsLabel.Size = new System.Drawing.Size(147, 20);
+            this.numOfPointsLabel.TabIndex = 5;
+            this.numOfPointsLabel.Text = "Number of points: ";
+            // 
+            // dropdownList
+            // 
+            this.dropdownList.FormattingEnabled = true;
+            this.dropdownList.Location = new System.Drawing.Point(165, 106);
+            this.dropdownList.Name = "dropdownList";
+            this.dropdownList.Size = new System.Drawing.Size(135, 24);
+            this.dropdownList.TabIndex = 6;
+            this.dropdownList.SelectedIndexChanged += new System.EventHandler(this.dropdownList_SelectedIndexChanged);
+            // 
             // MapPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1095, 741);
+            this.Controls.Add(this.dropdownList);
+            this.Controls.Add(this.numOfPointsLabel);
+            this.Controls.Add(this.trackIdLabel);
             this.Controls.Add(this.map);
             this.Controls.Add(this.formBorder);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -124,6 +159,7 @@ namespace FinalProject_2019.Pages {
             this.formBorder.ResumeLayout(false);
             this.formBorder.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -134,5 +170,8 @@ namespace FinalProject_2019.Pages {
         private System.Windows.Forms.Button closeForm;
         private System.Windows.Forms.Panel panel1;
         private GMap.NET.WindowsForms.GMapControl map;
+        private Label trackIdLabel;
+        private Label numOfPointsLabel;
+        private ComboBox dropdownList;
     }
 }

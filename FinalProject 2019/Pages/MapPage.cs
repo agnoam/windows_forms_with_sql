@@ -20,8 +20,12 @@ namespace FinalProject_2019.Pages {
         private Point lastLocation;
         private DatabaseConnector db = new DatabaseConnector();
         private Employee signedEmp = null;
-        private Track[] allTracks;
+        private Dictionary<string, Track> allTracks = new Dictionary<string, Track>();
         private Track trackToShow;
+        private string trackID;
+
+        private GMapOverlay routeOverlay = null;
+        private GMapOverlay markersOverlay = null;
 
         public MapPage() {
             InitializeComponent();
@@ -34,17 +38,44 @@ namespace FinalProject_2019.Pages {
             allTracks = db.getAllTracksForEmp(signedEmp.id);
         }
 
-        public MapPage(string trackID) {
+        public MapPage(string trackID_c) {
             InitializeComponent();
 
+            trackID = trackID_c;
             trackToShow = db.getTrackByID(trackID);
         }
 
         private void MapPage_Load(object sender, EventArgs e) {
             loadGoogleMaps();
 
-            if(trackToShow != null) {
+            if (trackToShow != null) {
+                trackIdLabel.Text = $"Track ID: {trackID}";
+                numOfPointsLabel.Text = $"Number of points: {trackToShow.atms.Length}";
                 drawRoute(trackToShow);
+
+                trackIdLabel.Visible = true;
+                numOfPointsLabel.Visible = true;
+            }
+
+            if (signedEmp != null) {
+                trackIdLabel.Text = $"Hello {signedEmp.name}";
+                if(allTracks.Count > 0) {
+                    string[] keysArr = allTracks.Keys.ToArray();
+
+                    for (int i = 0; i < allTracks.Keys.Count; i++) {
+                        dropdownList.Items.Add($"Track number {keysArr[i]}"); // trackID = keysArr[i]
+                    }
+
+                    numOfPointsLabel.Text = "Track selected: ";
+                } else {
+                    MessageBox.Show($"Hey {signedEmp.name}, You don't register to any track at all. Try again later.");
+                    new LoginPage().Show();
+                    Close();
+                }
+            } else {
+                dropdownList.Hide();
+                trackIdLabel.Visible = false;
+                numOfPointsLabel.Visible = false;
             }
         }
 
@@ -90,15 +121,17 @@ namespace FinalProject_2019.Pages {
         }
 
         private void addMarker(GMapMarker marker, string toolTip) {
-            GMapOverlay markersOverlay = new GMapOverlay("markersLayer");
+            GMapOverlay markersOverlay_i = new GMapOverlay("markersLayer");
+            markersOverlay = markersOverlay_i;
 
             if(!AdditionalFunctions.isEmpty(toolTip)) {
                 marker.ToolTipMode = MarkerTooltipMode.OnMouseOver;
                 marker.ToolTipText = toolTip;
             }
 
-            markersOverlay.Markers.Add(marker);
+            markersOverlay_i.Markers.Add(marker);
             map.Overlays.Add(markersOverlay); // Adding markers overlay to the map
+
         }
 
         private void drawRoute(Track track) {
@@ -117,15 +150,33 @@ namespace FinalProject_2019.Pages {
                 addMarker(new GMarkerGoogle(sortedPoints[i].toPointLatLng(), GMarkerGoogleType.green), (i+1).ToString());
                 points.Add(sortedPoints[i].toPointLatLng());
             }
-            
-            GMapPolygon polygon = new GMapPolygon(points, "routePolygon");
-            polygon.Fill = new SolidBrush(Color.FromArgb(0, Color.Red));
 
-            polygon.Stroke = new Pen(Color.Red, 5);
-            polyOverlay.Polygons.Add(polygon);
+            if(sortedPoints.Count > 1) {
+                GMapPolygon polygon = new GMapPolygon(points, "routePolygon");
+                polygon.Fill = new SolidBrush(Color.FromArgb(0, Color.Red));
 
-            map.Overlays.Add(polyOverlay);
-            map.ZoomAndCenterMarkers("markersLayer");
+                polygon.Stroke = new Pen(Color.Red, 5);
+                polyOverlay.Polygons.Add(polygon);
+
+                map.Overlays.Add(polyOverlay);
+                map.ZoomAndCenterMarkers("markersLayer");
+
+                routeOverlay = polyOverlay;
+            } else {
+                MessageBox.Show("There is one point with no direction, So you can't show it, wait for track update");
+            }
+        }
+
+        private void dropdownList_SelectedIndexChanged(object sender, EventArgs e) {
+            if(routeOverlay != null) {
+                map.Overlays.Remove(routeOverlay);
+            }
+
+            if(markersOverlay != null) {
+                map.Overlays.Remove(markersOverlay);
+            }
+
+            drawRoute(allTracks[dropdownList.Text.Split(' ')[2]]);
         }
     }
 }

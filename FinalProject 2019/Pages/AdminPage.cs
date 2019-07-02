@@ -267,12 +267,15 @@ namespace FinalProject_2019 {
             Dictionary<string, int> allAtms = db.getAllAtms(); // { id, live_money_avilable }
 
             string[] keys = allAtms.Keys.ToArray();
+            int[] days = { 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
 
-            for (int i = 0; i < 200; i++) {
+            for (int i = 0; i < 1400; i++) {
+
+                SqlDate date = new SqlDate(days[i / 200], 6, 2019);
                 Random random = new Random();
                 int randID = random.Next(0, keys.Length);
 
-                db.makeWithdrawal(keys[randID], new SqlDate(28, 6, 2019), random.Next(1, 50) * 100);
+                db.makeWithdrawal(keys[randID], date, random.Next(1, 50) * 100);
             }
 
             MessageBox.Show("All withdrawals saved successfuly");

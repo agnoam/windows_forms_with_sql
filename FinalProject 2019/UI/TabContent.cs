@@ -108,21 +108,21 @@ namespace FinalProject_2019.UI {
 
         private void deleteButton_Click(object sender, EventArgs e) {
             if(tabChooser == TabChooser.ATM) {
-                DialogResult res = MessageBox.Show($"Are you sure that yow want to delete ATM of number {itemId} ?");
+                DialogResult res = MessageBox.Show($"Are you sure that yow want to delete ATM of number {itemId} ?", "", MessageBoxButtons.OKCancel);
 
                 if (res == DialogResult.OK) {
                     database.deleteFromTable("Atms", itemId);
                     database.deleteFromTable("Addresses", addrsId);
                 }
             } else if(tabChooser == TabChooser.Cars) {
-                DialogResult res = MessageBox.Show($"Are you sure that yow want to delete Car number {itemId} ?");
+                DialogResult res = MessageBox.Show($"Are you sure that yow want to delete Car number {itemId} ?", "", MessageBoxButtons.OKCancel);
 
                 if (res == DialogResult.OK) {
                     database.deleteFromTable("Cars", itemId);
                     database.deleteFromTable("Employees", selectedCar.driver_id);
                 }
             } else if(tabChooser == TabChooser.Employees) {
-                DialogResult res = MessageBox.Show($"Are you sure that yow want to delete Employee of id: {itemId} ?");
+                DialogResult res = MessageBox.Show($"Are you sure that yow want to delete Employee of id: {itemId} ?", "", MessageBoxButtons.OKCancel);
 
                 if (res == DialogResult.OK) {
                     database.deleteFromTable("Employees", itemId);

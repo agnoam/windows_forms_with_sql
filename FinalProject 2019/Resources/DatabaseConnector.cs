@@ -399,7 +399,7 @@ namespace FinalProject_2019.Resources {
         public Address getAddressByID(string id) {
             connect();
 
-            string query = $"SELECT * FROM Addresses WHERE id = {id};";
+            string query = $"SELECT * FROM Addresses WHERE id = {id}";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             Address addressToReturn = null;
 
@@ -833,10 +833,41 @@ namespace FinalProject_2019.Resources {
             throw new Exception("Connection with database didn't established, Please try again");
         }
 
-        public Track[] getAllTracksForEmp(string empID) {
+        public Car getCarByID(string carID) {
             connect();
 
-            string query = $"SELECT * FROM Tracks WHERE Employees_id = {empID} or Manager_id = {empID}";
+            string query = $"SELECT * FROM Cars WHERE id = {carID}";
+            MySqlCommand cmd = new MySqlCommand(query, conn);
+            cmd.CommandType = CommandType.Text;
+
+            if(conn != null) {
+                try {
+                    conn.Open();
+
+                    Car carToReturn = new Car("", "", new SqlDate(""), "");
+                    MySqlDataReader dataReader = cmd.ExecuteReader();
+                    while(dataReader.Read()) {
+                        carToReturn.code = dataReader["code"].ToString();
+                        carToReturn.model = dataReader["model"].ToString();
+                        carToReturn.creation_date = new SqlDate(dataReader["creation_date"].ToString());
+                        carToReturn.driver_id = dataReader["driver_id"].ToString();
+                    }
+
+                    conn.Close();
+                    return carToReturn;
+                } catch(MySqlException ex) {
+                    conn.Close();
+                    throw ex;
+                }
+            }
+
+            throw new Exception("Connection with database didn't established, Please try again");
+        }
+
+        public Dictionary<string, Track> getAllTracksForEmp(string empID) {
+            connect();
+
+            string query = $"SELECT * FROM Tracks";
             MySqlCommand cmd = new MySqlCommand(query, conn);
             cmd.CommandType = CommandType.Text;
 
@@ -848,13 +879,18 @@ namespace FinalProject_2019.Resources {
                     dataTable.Load(cmd.ExecuteReader());
                     var rows = dataTable.AsEnumerable().ToArray();
 
-                    List<Track> allTracks = new List<Track>();
+                    Dictionary<string, Track> allTracks = new Dictionary<string, Track>();
                     for(int i = 0; i < rows.Length; i++) {
-                        allTracks.Add(getTrackByID(rows[i]["id"].ToString()));
+                        Track track = getTrackByID(rows[i]["id"].ToString());
+                        Car car = getCarByID(track.car_id);
+
+                        if(car.driver_id == empID || track.employee_id == empID || track.manager_id == empID) {
+                            allTracks[rows[i]["id"].ToString()] = track;
+                        }
                     }
 
                     conn.Close();
-                    return allTracks.ToArray();
+                    return allTracks;
                 } catch(MySqlException ex) {
                     conn.Close();
                     throw ex;
